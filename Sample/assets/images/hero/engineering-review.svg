@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#10141b"/>
+  <rect x="70" y="80" width="1060" height="640" rx="28" fill="#1d2833" stroke="#3f7fe8" stroke-width="4"/>
+  <rect x="180" y="180" width="300" height="220" rx="18" fill="#2a3e51"/>
+  <rect x="520" y="180" width="260" height="180" rx="18" fill="#3d566c"/>
+  <rect x="820" y="180" width="180" height="180" rx="18" fill="#4f6d84"/>
+  <rect x="200" y="450" width="760" height="120" rx="18" fill="#2f4459"/>
+  <text x="600" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#f8fafc">Placeholder image</text>
+  <text x="600" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#9fb3cf">Hero panel image</text>
+</svg>

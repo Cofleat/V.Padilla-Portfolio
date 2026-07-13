@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#121825"/>
+  <rect x="120" y="140" width="1360" height="720" rx="34" fill="#1c2633" stroke="#3f7fe8" stroke-width="6"/>
+  <rect x="280" y="250" width="320" height="300" rx="24" fill="#36536a"/>
+  <rect x="650" y="250" width="280" height="300" rx="24" fill="#4b6e89"/>
+  <rect x="980" y="250" width="240" height="300" rx="24" fill="#2f4558"/>
+  <rect x="280" y="590" width="940" height="120" rx="24" fill="#3a5365"/>
+  <text x="800" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" fill="#f8fafc">Rearing Box</text>
+  <text x="800" y="490" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" fill="#9eb4cd">Fabrication Concept</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#10141b"/>
+  <rect x="70" y="80" width="1060" height="640" rx="28" fill="#1e2a35" stroke="#3f7fe8" stroke-width="4"/>
+  <rect x="180" y="180" width="260" height="220" rx="18" fill="#3f5d75"/>
+  <rect x="480" y="180" width="260" height="220" rx="18" fill="#4c6782"/>
+  <rect x="760" y="180" width="200" height="220" rx="18" fill="#2b4156"/>
+  <rect x="200" y="450" width="740" height="110" rx="18" fill="#35556a"/>
+  <text x="600" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#f8fafc">Placeholder image</text>
+  <text x="600" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" fill="#9fb3cf">About workshop image</text>
+</svg>

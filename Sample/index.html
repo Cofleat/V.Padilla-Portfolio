@@ -1,0 +1,2331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Premium portfolio of Vienjamar Padilla, a Mechanical Engineering Technology graduate, Technical Designer, CAD Specialist, and engineering documentation professional.">
+  <meta name="author" content="Vienjamar Padilla">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#10141b">
+  <meta property="og:title" content="Vienjamar Padilla | Technical Designer &amp; CAD Specialist">
+  <meta property="og:description" content="Mechanical Engineering Technology portfolio focused on CAD modeling, engineering documentation, project coordination, and process improvement.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/backgrounds/hero-technical-work.svg">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vienjamar Padilla | Technical Designer &amp; CAD Specialist">
+  <meta name="twitter:description" content="Engineering-focused portfolio for CAD, technical design, documentation, and project coordination.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <title>Vienjamar Padilla | Technical Designer &amp; CAD Specialist</title>
+  <style>
+    /* Core tokens and reset */
+    :root {
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface-2: #edf1f5;
+      --ink: #111821;
+      --ink-soft: #566273;
+      --ink-muted: #7b8797;
+      --charcoal: #10141b;
+      --charcoal-2: #171d26;
+      --steel: #293241;
+      --line: #dce3eb;
+      --line-dark: rgba(220, 227, 235, 0.14);
+      --accent: #3f7fe8;
+      --accent-soft: #e8f1ff;
+      --accent-ink: #1557b4;
+      --white: #f8fafc;
+      --shadow: 0 22px 70px rgba(17, 24, 33, 0.12);
+      --shadow-soft: 0 14px 38px rgba(17, 24, 33, 0.09);
+      --radius: 8px;
+      --radius-lg: 12px;
+      --header-height: 72px;
+      /* Typographic scale */
+      --type-base: 16px;
+      --type-xs: 0.8125rem; /* 13px */
+      --type-sm: 0.875rem;  /* 14px */
+      --type-md: 1rem;      /* 16px */
+      --type-lg: 1.125rem;  /* 18px */
+      --type-xl: 1.25rem;   /* 20px */
+      --type-2xl: 1.5rem;   /* 24px */
+      --type-3xl: 2rem;     /* 32px */
+      --type-4xl: 3.2rem;   /* hero max */
+      --leading-tight: 1.12;
+      --leading-snug: 1.25;
+      --leading-relaxed: 1.6;
+      --tracking-tight: -0.01em;
+      --tracking-normal: 0em;
+      --tracking-wide: 0.02em;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height) + 18px);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "DM Sans", "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: var(--type-md);
+      line-height: var(--leading-relaxed);
+      min-width: 320px;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(63, 127, 232, 0.48);
+      outline-offset: 3px;
+    }
+
+    .container {
+      margin: 0 auto;
+      width: min(1140px, calc(100% - 40px));
+    }
+
+    .skip-link {
+      background: var(--accent);
+      border-radius: 0 0 var(--radius) var(--radius);
+      color: #ffffff;
+      font-weight: 800;
+      left: 18px;
+      padding: 10px 14px;
+      position: fixed;
+      top: 0;
+      transform: translateY(-120%);
+      z-index: 200;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .scroll-progress {
+      background: transparent;
+      height: 3px;
+      inset: 0 0 auto;
+      position: fixed;
+      z-index: 180;
+    }
+
+    .scroll-progress span {
+      background: linear-gradient(90deg, var(--accent), #88aeea);
+      display: block;
+      height: 100%;
+      transform: scaleX(0);
+      transform-origin: left;
+      width: 100%;
+    }
+
+    /* Navigation and shared controls */
+    .site-header {
+      background: rgba(16, 20, 27, 0.86);
+      border-bottom: 1px solid var(--line-dark);
+      backdrop-filter: blur(18px);
+      min-height: var(--header-height);
+      position: sticky;
+      top: 0;
+      z-index: 120;
+    }
+
+    .nav-wrap {
+      align-items: center;
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      min-height: var(--header-height);
+    }
+
+    .logo {
+      align-items: center;
+      color: var(--white);
+      display: inline-flex;
+      gap: 12px;
+      font-size: var(--type-sm);
+      font-weight: 900;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      align-items: center;
+      background:
+        linear-gradient(145deg, rgba(63, 127, 232, 0.96), rgba(96, 121, 153, 0.92)),
+        var(--accent);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      box-shadow: 0 16px 32px rgba(31, 91, 189, 0.24);
+      color: #ffffff;
+      display: inline-flex;
+      font-size: 0.82rem;
+      height: 38px;
+      justify-content: center;
+      width: 38px;
+    }
+
+    .logo-mark.logo-image {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      display: block;
+      object-fit: contain;
+      padding: 0;
+    }
+
+    .nav-list {
+      align-items: center;
+      display: flex;
+      gap: 18px;
+    }
+
+    .nav-link {
+      color: #b9c3d2;
+      display: inline-flex;
+      font-size: var(--type-sm);
+      font-weight: 800;
+      padding: 22px 0;
+      position: relative;
+      white-space: nowrap;
+      letter-spacing: var(--tracking-wide);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #ffffff;
+    }
+
+    .nav-link.active::after {
+      background: var(--accent);
+      border-radius: 999px;
+      bottom: 17px;
+      content: "";
+      height: 3px;
+      left: 0;
+      position: absolute;
+      right: 0;
+    }
+
+    .nav-toggle {
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      color: #ffffff;
+      cursor: pointer;
+      display: none;
+      height: 42px;
+      justify-content: center;
+      width: 42px;
+    }
+
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      background: currentColor;
+      border-radius: 999px;
+      content: "";
+      display: block;
+      height: 2px;
+      position: relative;
+      transition: transform 0.2s, opacity 0.2s;
+      width: 18px;
+    }
+
+    .nav-toggle span::before {
+      position: absolute;
+      top: -6px;
+    }
+
+    .nav-toggle span::after {
+      position: absolute;
+      top: 6px;
+    }
+
+    .nav-toggle[aria-expanded="true"] span {
+      background: transparent;
+    }
+
+    .nav-toggle[aria-expanded="true"] span::before {
+      background: #ffffff;
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] span::after {
+      background: #ffffff;
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .mobile-menu {
+      background: rgba(16, 20, 27, 0.98);
+      border-top: 1px solid var(--line-dark);
+      box-shadow: var(--shadow);
+      display: none;
+      left: 0;
+      padding: 10px 20px 22px;
+      position: fixed;
+      right: 0;
+      top: var(--header-height);
+      z-index: 110;
+    }
+
+    .mobile-menu.active {
+      display: grid;
+    }
+
+    .mobile-menu .nav-link {
+      border-bottom: 1px solid var(--line-dark);
+      padding: 16px 0;
+      min-height: 48px;
+    }
+
+    .btn {
+      align-items: center;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: inline-flex;
+      font-size: 0.9rem;
+      font-weight: 900;
+      gap: 8px;
+      justify-content: center;
+      min-height: 44px;
+      padding: 12px 18px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      box-shadow: 0 14px 30px rgba(63, 127, 232, 0.26);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #3473d6;
+    }
+
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-subtle {
+      background: var(--surface-2);
+      color: var(--ink);
+    }
+
+    .btn-subtle:hover {
+      background: #dfe7ef;
+    }
+
+    .btn-small {
+      font-size: 0.78rem;
+      min-height: 36px;
+      padding: 8px 12px;
+    }
+
+    .btn[disabled] {
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: 0.58;
+      transform: none;
+    }
+
+    /* Hero and section foundations */
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(16, 20, 27, 0.96), rgba(16, 20, 27, 0.78)),
+        url("assets/images/backgrounds/hero-technical-work.svg");
+      background-position: center;
+      background-size: cover;
+      color: #ffffff;
+      overflow: hidden;
+      padding: 86px 0 76px;
+      position: relative;
+    }
+
+    .blueprint::before {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: 42px 42px;
+      content: "";
+      inset: 0;
+      mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+      pointer-events: none;
+      position: absolute;
+    }
+
+    .hero-inner {
+      align-items: center;
+      display: grid;
+      gap: 46px;
+      grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      color: #9dbdf2;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 850;
+      letter-spacing: 0;
+      line-height: 1.12;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, var(--type-4xl));
+      max-width: 780px;
+      text-transform: uppercase;
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+    }
+
+    .hero-lead {
+      color: #d7e0ed;
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      margin-top: 18px;
+      max-width: 680px;
+    }
+
+    .role-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 24px;
+      max-width: 760px;
+    }
+
+    .role-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      color: #e8eef7;
+      font-size: 0.78rem;
+      font-weight: 850;
+      padding: 7px 11px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .hero-panel {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+    }
+
+    .hero-panel-visual {
+      aspect-ratio: 4 / 3;
+      background-image: url("assets/images/hero/engineering-review.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+    }
+
+    .hero-panel-body {
+      display: grid;
+      gap: 16px;
+      padding: 18px;
+    }
+
+    .panel-kicker {
+      color: #9dbdf2;
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .panel-title {
+      color: #ffffff;
+      font-size: 1.12rem;
+    }
+
+    .metric-grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .metric {
+      border-left: 3px solid var(--accent);
+      min-width: 0;
+      padding-left: 10px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.04rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      color: #b9c3d2;
+      display: block;
+      font-size: 0.72rem;
+      line-height: 1.25;
+      margin-top: 6px;
+    }
+
+    section {
+      padding: 72px 0;
+      position: relative;
+    }
+
+    .section-head {
+      align-items: end;
+      display: flex;
+      gap: 24px;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .section-head.center {
+      align-items: center;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .section-kicker {
+      color: var(--accent-ink);
+      font-size: 1.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      margin-bottom: 9px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      color: var(--ink);
+      font-size: clamp(var(--type-2xl), 2.4vw, 2.2rem);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      max-width: 760px;
+    }
+
+    .section-summary {
+      color: var(--ink-soft);
+      max-width: 610px;
+    }
+
+    .section-dark {
+      background: var(--charcoal);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .section-dark .section-title,
+    .section-dark h3,
+    .section-dark h4 {
+      color: #ffffff;
+    }
+
+    .section-dark .section-kicker {
+      color: #9dbdf2;
+    }
+
+    .section-dark .section-summary {
+      color: #b9c3d2;
+    }
+
+    .about {
+      background:
+        radial-gradient(circle at top right, rgba(63, 127, 232, 0.08), transparent 28rem),
+        var(--bg);
+    }
+
+    .about-grid {
+      align-items: center;
+      display: grid;
+      gap: 42px;
+      grid-template-columns: 0.95fr 1.05fr;
+    }
+
+    .image-mosaic {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .image-tile {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: var(--radius);
+      height: 190px;
+      width: 100%;
+    }
+
+    .image-mosaic .main-photo {
+      background-image: url("assets/images/about/cad-workstation.svg");
+      box-shadow: var(--shadow-soft);
+      grid-row: span 2;
+      height: 392px;
+    }
+
+    .image-mosaic .about-tile-secondary {
+      background-image: url("assets/images/backgrounds/hero-technical-work.svg");
+    }
+
+    .image-mosaic .about-tile-tertiary {
+      background-image: url("assets/images/about/workshop-tools.svg");
+    }
+
+    .about-copy {
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-copy p {
+      color: var(--ink-soft);
+      font-size: 1rem;
+    }
+
+    .proof-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 8px;
+    }
+
+    .proof-card {
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    .proof-card strong {
+      color: var(--ink);
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 5px;
+    }
+
+    .proof-card span {
+      color: var(--ink-muted);
+      display: block;
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    /* Experience and education */
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 8px;
+      position: relative;
+    }
+
+    .timeline-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 180px 1fr;
+      padding: 24px;
+      position: relative;
+    }
+
+    .timeline-date {
+      color: var(--accent-ink);
+      font-size: var(--type-sm);
+      font-weight: 900;
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      position: relative;
+      padding-left: 26px;
+      align-self: center;
+    }
+
+    .timeline-date::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .timeline-card h3 {
+      font-size: var(--type-lg);
+      margin-bottom: 6px;
+      line-height: var(--leading-snug);
+    }
+
+    .company {
+      color: var(--ink-soft);
+      font-size: var(--type-md);
+      font-weight: 850;
+      margin-bottom: 12px;
+    }
+
+    .detail-list {
+      color: var(--ink-soft);
+      display: grid;
+      gap: 8px;
+      font-size: var(--type-md);
+      list-style: none;
+    }
+
+    .detail-list li {
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .detail-list li::before {
+      background: var(--accent);
+      border-radius: 999px;
+      content: "";
+      height: 6px;
+      left: 0;
+      position: absolute;
+      top: 0.66em;
+      width: 6px;
+    }
+
+    /* Data-rendered cards and grids */
+    .education-grid,
+    .services-grid,
+    .skills-grid,
+    .competency-grid,
+    .cert-grid,
+    .portfolio-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .education-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .education-card,
+    .skill-card,
+    .competency-card,
+    .cert-card,
+    .service-card,
+    .project-card,
+    .contact-card,
+    .footer-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 1px 0 rgba(17, 24, 33, 0.02);
+    }
+
+    .education-card {
+      padding: 22px;
+    }
+
+    .education-card h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .education-card p {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .education-card .date {
+      color: var(--accent-ink);
+      font-size: 0.8rem;
+      font-weight: 900;
+      margin-top: 14px;
+      text-transform: uppercase;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .skill-card,
+    .competency-card,
+    .service-card {
+      height: 100%;
+      overflow: hidden;
+      padding: 22px;
+      position: relative;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .skill-card:hover,
+    .competency-card:hover,
+    .service-card:hover,
+    .project-card:hover,
+    .cert-card:hover {
+      border-color: rgba(63, 127, 232, 0.32);
+      box-shadow: var(--shadow-soft);
+      transform: translateY(-4px);
+    }
+
+    .skill-card::after,
+    .competency-card::after,
+    .service-card::after {
+      background: linear-gradient(135deg, rgba(63, 127, 232, 0.1), transparent);
+      content: "";
+      height: 120px;
+      position: absolute;
+      right: -54px;
+      top: -54px;
+      transform: rotate(18deg);
+      width: 120px;
+    }
+
+    .icon-chip {
+      align-items: center;
+      background: var(--accent-soft);
+      border: 1px solid rgba(63, 127, 232, 0.16);
+      border-radius: var(--radius);
+      color: var(--accent-ink);
+      display: inline-flex;
+      font-size: 1.1rem;
+      height: 42px;
+      justify-content: center;
+      margin-bottom: 16px;
+      position: relative;
+      width: 42px;
+      z-index: 1;
+    }
+
+    .contact-method .icon-chip,
+    .cert-top .icon-chip {
+      flex: 0 0 auto;
+      margin-bottom: 0;
+    }
+
+    .skill-card h3,
+    .competency-card h3,
+    .service-card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag {
+      background: #f4f7fb;
+      border: 1px solid #e3eaf2;
+      border-radius: 999px;
+      color: var(--ink-soft);
+      font-size: 0.75rem;
+      font-weight: 800;
+      line-height: 1.25;
+      padding: 6px 9px;
+    }
+
+    .section-dark .skill-card,
+    .section-dark .competency-card,
+    .section-dark .service-card {
+      background: rgba(255, 255, 255, 0.055);
+      border-color: rgba(255, 255, 255, 0.11);
+      backdrop-filter: blur(16px);
+    }
+
+    .section-dark .tag {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+    }
+
+    .competency-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .portfolio-controls {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink-soft);
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 900;
+      min-height: 38px;
+      padding: 9px 15px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .portfolio-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .project-card[hidden] {
+      display: none;
+    }
+
+    .project-media {
+      background: var(--surface-2);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-media img {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      transition: transform 0.35s;
+      width: 100%;
+    }
+
+    .project-card:hover .project-media img {
+      transform: scale(1.04);
+    }
+
+    .project-category {
+      background: rgba(16, 20, 27, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 900;
+      left: 14px;
+      padding: 5px 9px;
+      position: absolute;
+      top: 14px;
+      backdrop-filter: blur(10px);
+    }
+
+    .project-body {
+      display: grid;
+      flex: 1;
+      gap: 14px;
+      padding: 20px;
+    }
+
+    .project-body h3 {
+      font-size: 1.05rem;
+    }
+
+    .project-body p {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .project-meta {
+      display: grid;
+      gap: 8px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .meta-row span:first-child {
+      color: var(--ink-muted);
+      flex: 0 0 74px;
+      font-size: 0.74rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .meta-row span:last-child {
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .cert-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cert-card {
+      display: grid;
+      gap: 15px;
+      padding: 20px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+
+    .cert-top {
+      align-items: start;
+      display: flex;
+      gap: 13px;
+    }
+
+    .cert-card h3 {
+      font-size: 0.96rem;
+      margin-bottom: 7px;
+    }
+
+    .cert-meta {
+      color: var(--ink-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      font-size: 0.78rem;
+      font-weight: 850;
+    }
+
+    .cert-meta span {
+      background: #f3f6fa;
+      border: 1px solid #e2e9f1;
+      border-radius: 999px;
+      padding: 5px 8px;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Contact and footer (compacted) */
+    .contact {
+      background:
+        radial-gradient(circle at 12% 8%, rgba(63, 127, 232, 0.06), transparent 18rem),
+        var(--bg);
+      padding: 48px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: start;
+    }
+
+    .contact-card {
+      padding: 18px;
+    }
+
+    .contact-methods {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .contact-method {
+      align-items: center;
+      background: #f7f9fc;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: flex;
+      gap: 10px;
+      min-width: 0;
+      padding: 10px;
+    }
+
+    .link-button {
+      background: transparent;
+      border: none;
+      color: var(--ink-soft);
+      font: inherit;
+      padding: 0;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .contact-method span:last-child,
+    .contact-method a {
+      color: var(--ink-soft);
+      overflow-wrap: anywhere;
+    }
+
+    .qr-placeholder {
+      align-items: center;
+      aspect-ratio: 1;
+      background:
+        linear-gradient(90deg, rgba(17, 24, 33, 0.08) 1px, transparent 1px),
+        linear-gradient(rgba(17, 24, 33, 0.08) 1px, transparent 1px),
+        #ffffff;
+      background-size: 18px 18px;
+      border: 1px dashed #aeb8c5;
+      border-radius: var(--radius);
+      color: var(--ink-muted);
+      display: flex;
+      font-size: 0.78rem;
+      font-weight: 900;
+      justify-content: center;
+      max-width: 140px;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      color: var(--ink-soft);
+      display: grid;
+      font-size: 0.8rem;
+      font-weight: 900;
+      gap: 6px;
+    }
+
+    input,
+    textarea {
+      background: #ffffff;
+      border: 1px solid #cfd8e4;
+      border-radius: var(--radius);
+      color: var(--ink);
+      padding: 10px 12px;
+      width: 100%;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* Resume request modal and toast */
+    .modal-backdrop {
+      align-items: center;
+      background: rgba(0,0,0,0.45);
+      display: none;
+      height: 100vh;
+      inset: 0;
+      justify-content: center;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 220;
+      padding: 20px;
+    }
+
+    .modal {
+      background: var(--surface);
+      border-radius: 12px;
+      max-width: 420px;
+      padding: 18px;
+      width: 100%;
+      box-shadow: var(--shadow);
+    }
+
+    .modal h3 { margin-bottom: 8px; }
+
+    .modal .modal-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:12px; }
+
+    .toast {
+      background: rgba(17,24,33,0.96);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(17,24,33,0.2);
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 240;
+      display: none;
+    }
+
+    .form-status {
+      color: var(--accent-ink);
+      display: none;
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
+
+    .form-status.visible {
+      display: block;
+    }
+
+    .site-footer {
+      background: var(--charcoal);
+      color: #b9c3d2;
+      padding: 44px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      margin-bottom: 26px;
+    }
+
+    .footer-panel {
+      background: rgba(255, 255, 255, 0.045);
+      border-color: rgba(255, 255, 255, 0.09);
+      box-shadow: none;
+      padding: 20px;
+    }
+
+    .footer-panel h2,
+    .footer-panel h3 {
+      color: #ffffff;
+      font-size: 0.98rem;
+      margin-bottom: 12px;
+    }
+
+    .footer-panel p,
+    .footer-panel a {
+      color: #b9c3d2;
+      font-size: 0.88rem;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      padding-top: 20px;
+    }
+
+    .back-to-top {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 900;
+      padding: 8px 12px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Motion and responsive rules */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .nav-list {
+        gap: 12px;
+      }
+
+      .nav-link {
+        font-size: 0.78rem;
+      }
+
+      .skills-grid,
+      .competency-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .portfolio-grid,
+      .cert-grid,
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 860px) {
+      :root {
+        --header-height: 66px;
+      }
+
+      .container {
+        width: min(100% - 32px, 1140px);
+      }
+
+      .nav-list {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .hero {
+        padding: 40px 0 40px;
+      }
+
+      .hero-inner,
+      .about-grid,
+      .contact-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.3rem, 6vw, 2.2rem);
+      }
+
+      /* Use a smaller hero background image on mobile to reduce download size */
+      .hero {
+        background-image:
+          linear-gradient(135deg, rgba(16, 20, 27, 0.96), rgba(16, 20, 27, 0.78)),
+          url("assets/images/backgrounds/hero-technical-work.svg");
+      }
+
+      .logo { font-size: var(--type-xs); }
+      .logo-mark.logo-image { width: 30px; height: 30px; }
+      .nav-toggle { height: 38px; width: 38px; }
+
+      /* Ensure touch targets are large enough on small screens */
+      button,
+      .mobile-menu .nav-link,
+      .btn {
+        min-height: 44px;
+        padding: 12px 14px;
+      }
+
+      .section-head,
+      .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .timeline-card {
+        grid-template-columns: 1fr;
+        padding: 12px;
+        align-items: center;
+      }
+
+      .timeline-date {
+        padding-left: 34px;
+        font-size: var(--type-sm);
+      }
+
+      .timeline-date::before {
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 10px;
+        width: 10px;
+      }
+
+      .education-grid,
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      :root {
+        /* Compact typographic scale for small screens */
+        --type-xs: 0.75rem;  /* 12px */
+        --type-sm: 0.8125rem; /* 13px */
+        --type-md: 0.9375rem; /* 15px */
+        --type-lg: 1rem;      /* 16px */
+        --type-xl: 1.125rem;  /* 18px */
+        --type-2xl: 1.125rem; /* 18px */
+        --type-3xl: 1.5rem;   /* 24px */
+        --type-4xl: 2rem;     /* compact hero max */
+        --leading-relaxed: 1.4;
+      }
+
+      .container {
+        width: min(100% - 28px, 1140px);
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      .logo span:last-child {
+        max-width: 190px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.35rem, 16vw, 3.45rem);
+      }
+
+      .hero-lead {
+        font-size: 0.96rem;
+      }
+
+      .btn-row,
+      .portfolio-controls {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .btn,
+      .filter-btn {
+        width: 100%;
+      }
+
+      .metric-grid,
+      .skills-grid,
+      .competency-grid,
+      .portfolio-grid,
+      .cert-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .image-mosaic {
+        grid-template-columns: 1fr;
+      }
+
+      .image-mosaic .main-photo,
+      .image-mosaic img {
+        height: 230px;
+      }
+
+      .contact-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="#home" aria-label="Vienjamar Padilla home">
+        <img class="logo-mark logo-image" src="favicon.svg" alt="Vienjamar Padilla logo">
+        <span>VIENJAMAR PADILLA</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#home">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#experience">Experience</a></li>
+          <li><a class="nav-link" href="#skills">Skills</a></li>
+          <li><a class="nav-link" href="#competencies">Core</a></li>
+          <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li><a class="nav-link" href="#services">Services</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a class="nav-link" href="#home">Home</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#experience">Experience</a>
+      <a class="nav-link" href="#skills">Skills</a>
+      <a class="nav-link" href="#competencies">Core</a>
+      <a class="nav-link" href="#portfolio">Portfolio</a>
+      <a class="nav-link" href="#certifications">Certifications</a>
+      <a class="nav-link" href="#services">Services</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main" role="main">
+    <section class="hero blueprint" id="home">
+      <div class="container hero-inner">
+        <div class="reveal">
+          <p class="eyebrow">Mechanical Engineering Technology Graduate</p>
+          <h1>Technical Designer for precise engineering work.</h1>
+          <p class="hero-lead">I build clear CAD models, fabrication-ready documentation, and coordinated design outputs for mechanical and technical projects.</p>
+          <div class="role-grid" aria-label="Professional focus areas">
+            <span class="role-pill">Technical Designer</span>
+            <span class="role-pill">CAD Specialist</span>
+            <span class="role-pill">Engineering Documentation</span>
+            <span class="role-pill">Project Coordination</span>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#portfolio">View Portfolio</a>
+            <a class="btn btn-outline" href="assets/Vienjamar-Padilla-Resume.pdf" download>Download Resume</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel reveal" aria-label="Portfolio highlights">
+          <div class="hero-panel-visual" aria-hidden="true"></div>
+          <div class="hero-panel-body">
+            <div>
+              <p class="panel-kicker">Design focus</p>
+              <h2 class="panel-title">CAD modeling, documentation, and technical coordination.</h2>
+            </div>
+            <div class="metric-grid">
+              <div class="metric">
+                <strong>2+</strong>
+                <span>Years experience</span>
+              </div>
+              <div class="metric">
+                <strong>CAD</strong>
+                <span>Modeling and drawings</span>
+              </div>
+              <div class="metric">
+                <strong>ME</strong>
+                <span>Technical design</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="image-mosaic reveal" aria-hidden="true">
+          <div class="image-tile main-photo"></div>
+          <div class="image-tile about-tile-secondary"></div>
+          <div class="image-tile about-tile-tertiary"></div>
+        </div>
+
+        <div class="about-copy reveal">
+          <div>
+            <p class="section-kicker">About</p>
+            <h2 class="section-title">Practical engineering design with clear documentation.</h2>
+          </div>
+          <p>I am a Mechanical Engineering Technology graduate focused on technical design, CAD modeling, engineering documentation, and project coordination. My work connects requirements, drawings, materials, and production details into organized outputs that teams can act on.</p>
+          <p>I am continuously improving through CAD training, process improvement, business operations, and visualization tools so I can support both technical execution and clearer client communication.</p>
+          <div class="proof-grid">
+            <div class="proof-card">
+              <strong>Technical Design</strong>
+              <span>Models, drawings, and manufacturable design details.</span>
+            </div>
+            <div class="proof-card">
+              <strong>Documentation</strong>
+              <span>BOMs, reports, estimates, and project references.</span>
+            </div>
+            <div class="proof-card">
+              <strong>Coordination</strong>
+              <span>Client alignment, scheduling, and structured follow-through.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Experience</p>
+            <h2 class="section-title">A technical timeline built around execution and coordination.</h2>
+          </div>
+          <p class="section-summary">Each role strengthened a different part of the design workflow: client requirements, CAD outputs, proposal development, costing, and project communication.</p>
+        </div>
+        <div class="timeline" id="experience-list"></div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Education</p>
+            <h2 class="section-title">Foundation in mechanical engineering technology.</h2>
+          </div>
+        </div>
+        <div class="education-grid">
+          <article class="education-card reveal">
+            <h3>Bachelor of Science in Mechanical Engineering</h3>
+            <p>Technological University of the Philippines - Cavite</p>
+            <p class="date">Aug 2019 - Sept 2023</p>
+          </article>
+          <article class="education-card reveal">
+            <h3>Senior High - STEM Strand</h3>
+            <p>Philippine Christian University - Cavite</p>
+            <p class="date">July 2017 - Aug 2019</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-dark blueprint" id="skills">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="section-kicker">Skills</p>
+          <h2 class="section-title">Grouped capabilities for design, operations, and visualization.</h2>
+          <p class="section-summary">A compact view of technical tools, process improvement knowledge, creative media, and business support skills.</p>
+        </div>
+        <div class="skills-grid" id="skills-grid"></div>
+      </div>
+    </section>
+
+    <section id="competencies">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Core Competencies</p>
+            <h2 class="section-title">Operational strengths that support technical teams.</h2>
+          </div>
+          <p class="section-summary">These competencies are useful across project coordination, recruiting support, business administration, documentation, and digital outreach.</p>
+        </div>
+        <div class="competency-grid" id="competency-grid"></div>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="section-kicker">Portfolio</p>
+          <h2 class="section-title">Project structure ready for deeper case studies.</h2>
+          <p class="section-summary">Each card is prepared for an image, software stack, role, summary, and project link so additional work can be added cleanly.</p>
+        </div>
+        <div class="portfolio-controls" aria-label="Project filters">
+          <button class="filter-btn active" type="button" data-filter="all">All</button>
+          <button class="filter-btn" type="button" data-filter="mechanical-design">Mechanical Design</button>
+          <button class="filter-btn" type="button" data-filter="technical-drawings">Technical Drawings</button>
+          <button class="filter-btn" type="button" data-filter="fabrication">Fabrication</button>
+          <button class="filter-btn" type="button" data-filter="renderings">3D Visualization</button>
+        </div>
+        <div class="portfolio-grid" id="portfolio-grid"></div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Certifications</p>
+            <h2 class="section-title">Certifications &amp; Professional Development</h2>
+          </div>
+          <p class="section-summary">Displayed in reverse chronological order, with placeholders ready for uploaded certificate files.</p>
+        </div>
+        <div class="cert-grid" id="cert-grid"></div>
+      </div>
+    </section>
+
+    <section class="section-dark blueprint" id="services">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="section-kicker">Services</p>
+          <h2 class="section-title">Technical support for teams that need clean design outputs.</h2>
+        </div>
+        <div class="services-grid" id="services-grid"></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-card reveal">
+          <p class="section-kicker">Contact</p>
+          <h2 class="section-title">Let's build the next technical deliverable.</h2>
+          <p class="section-summary">For CAD work, engineering documentation, technical design support, or project coordination, reach out through any of the channels below.</p>
+          <div class="contact-methods">
+            <div class="contact-method">
+              <span class="icon-chip" aria-hidden="true">&#9993;</span>
+              <a href="mailto:padilla.vienjamar.e@gmail.com">padilla.vienjamar.e@gmail.com</a>
+            </div>
+            <div class="contact-method">
+              <span class="icon-chip" aria-hidden="true">in</span>
+              <a href="https://linkedin.com/in/vienjamar-padilla" target="_blank" rel="noopener noreferrer">linkedin.com/in/vienjamar-padilla</a>
+            </div>
+            <div class="contact-method">
+              <span class="icon-chip" aria-hidden="true">&#8681;</span>
+              <button id="request-resume-btn" class="link-button">Request resume</button>
+            </div>
+            <div class="qr-placeholder">Future QR Code</div>
+          </div>
+        </div>
+
+        <form class="contact-card contact-form reveal" id="contact-form">
+          <label>
+            Name
+            <input type="text" name="name" id="contact-name" autocomplete="name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" id="contact-email" autocomplete="email" required>
+          </label>
+          <label>
+            Message
+            <textarea name="message" id="contact-message" required></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+          <p class="form-status" id="form-status" role="status">Opening your email app...</p>
+        </form>
+      </div>
+    </section>
+    <!-- Resume request modal -->
+    <div id="resume-modal" class="modal-backdrop" aria-hidden="true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+        <h3 id="resume-modal-title">Request resume</h3>
+        <p>Enter your email and I'll send a link to download my resume.</p>
+        <label style="display:block;margin-top:10px;font-weight:700;font-size:0.9rem">Name
+          <input id="resume-name" type="text" style="width:100%;padding:8px;margin-top:6px;border:1px solid #cfd8e4;border-radius:8px">
+        </label>
+        <label style="display:block;margin-top:8px;font-weight:700;font-size:0.9rem">Email
+          <input id="resume-email" type="email" style="width:100%;padding:8px;margin-top:6px;border:1px solid #cfd8e4;border-radius:8px">
+        </label>
+        <div class="modal-actions">
+          <button id="resume-modal-close" class="btn btn-subtle" type="button">Cancel</button>
+          <button id="resume-send-btn" class="btn btn-primary" type="button">Send Resume</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-panel">
+          <h2>Vienjamar Padilla</h2>
+          <p>Mechanical Engineering Technology graduate focused on CAD modeling, technical design, engineering documentation, and project coordination.</p>
+        </div>
+        <div class="footer-panel">
+          <h3>Quick Navigation</h3>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+        <div class="footer-panel">
+          <h3>Social Links</h3>
+          <nav class="footer-links" aria-label="Social links">
+            <a href="mailto:padilla.vienjamar.e@gmail.com">Email</a>
+            <a href="https://linkedin.com/in/vienjamar-padilla" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Vienjamar Padilla. All Rights Reserved.</p>
+        <a class="back-to-top" href="#home">Back to Top &#8593;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Vienjamar Padilla",
+      "jobTitle": "Technical Designer and CAD Specialist",
+      "email": "mailto:padilla.vienjamar.e@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cavite",
+        "addressCountry": "PH"
+      },
+      "sameAs": [
+        "https://linkedin.com/in/vienjamar-padilla"
+      ]
+    }
+  </script>
+
+  <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+
+  <script>
+    // Update these arrays to add future projects, certifications, services, and timeline entries.
+    const siteData = {
+      skills: [
+        {
+          title: "Engineering & Design",
+          icon: "&#9881;",
+          items: ["SolidWorks (Advanced)", "AutoCAD", "CAD", "3D Modeling"]
+        },
+        {
+          title: "Process Improvement",
+          icon: "&#128200;",
+          items: ["Lean Six Sigma Yellow Belt", "DMAIC Framework", "Waste Reduction"]
+        },
+        {
+          title: "Business & Operations",
+          icon: "&#128188;",
+          items: ["Strategic Supply Chain Management", "Market Research", "Sales Administration", "Microsoft Office"]
+        },
+        {
+          title: "Creative Media",
+          icon: "&#128249;",
+          items: ["Canva", "Adobe Premiere Pro", "Blender", "CapCut"]
+        },
+        {
+          title: "Architectural Visualization",
+          icon: "&#127968;",
+          items: ["SketchUp", "High-fidelity 3D Kitchen Rendering", "Residential Visualization", "Client Presentation"]
+        }
+      ],
+      competencies: [
+        {
+          title: "Talent & Workforce Coordination",
+          icon: "&#128101;",
+          items: ["Workforce Planning", "Personnel Evaluation", "Skills-based Deployment", "Role Assignment", "Scheduling"]
+        },
+        {
+          title: "Research & Communication",
+          icon: "&#128269;",
+          items: ["Online Research", "Candidate Evaluation", "Email Communication", "Client Coordination", "Digital Outreach"]
+        },
+        {
+          title: "Administrative & Business Support",
+          icon: "&#128203;",
+          items: ["Documentation Management", "Reporting", "Business Planning", "Marketing Coordination"]
+        },
+        {
+          title: "Technical & Digital Tools",
+          icon: "&#128187;",
+          items: ["Google Workspace", "Microsoft Office", "LinkedIn", "Social Media Platforms", "SolidWorks", "AutoCAD"]
+        }
+      ],
+      experience: [
+        {
+          period: "2024 - Present",
+          role: "Technical Representative & Proposals / Design Engineer (Mechanical)",
+          company: "JIFAS Engineering Services",
+          points: [
+            "Converted client technical requirements into structured project scopes, proposal packages, and delivery workflows.",
+            "Prepared costing references and quotation support by coordinating design assumptions, materials, and production considerations.",
+            "Reviewed 3D design intent for material selection, fabrication feasibility, and clearer communication with stakeholders."
+          ]
+        },
+        {
+          period: "2024",
+          role: "Company Representative",
+          company: "ZAYIN Engineering Services",
+          points: [
+            "Supported client relations, project acquisition, and business operations for engineering service engagements.",
+            "Coordinated technical conversations between internal contributors, clients, and project stakeholders.",
+            "Helped organize project documentation and administrative follow-through for smoother delivery."
+          ]
+        },
+        {
+          period: "2023 - 2024",
+          role: "Mechanical Draftsman",
+          company: "CEREHE Engineering Works",
+          points: [
+            "Produced shop drawings and technical drawing sets for fabrication and project coordination.",
+            "Assisted with costing, supplier communication, and drawing revisions to support production needs.",
+            "Improved project handoff clarity through organized drawings, documentation, and coordination notes."
+          ]
+        }
+      ],
+      projects: [
+        {
+          name: "PDA Test Fixture Fabrication",
+          category: "mechanical-design",
+          label: "Mechanical Design",
+          image: "assets/images/portfolio/mechanical-design/pda-test-fixture.svg",
+          software: "SolidWorks, AutoCAD, BOM",
+          role: "Technical Designer",
+          description: "Designed a fixture layout and fabrication-ready reference package for repeatable test operations and dimensional control."
+        },
+        {
+          name: "Machine Cover Design Revision",
+          category: "mechanical-design",
+          label: "Mechanical Design",
+          image: "assets/images/portfolio/mechanical-design/machine-cover-design.svg",
+          software: "SolidWorks, AutoCAD",
+          role: "Design Support",
+          description: "Updated the machine cover geometry for assembly fit, clear access, and simplified fabrication around the loading station."
+        },
+        {
+          name: "Photodiode Machine Cover",
+          category: "mechanical-design",
+          label: "Mechanical Design",
+          image: "assets/images/portfolio/mechanical-design/photodiode-machine-cover.svg",
+          software: "SolidWorks, Drafting",
+          role: "Mechanical Design Lead",
+          description: "Developed a compact machine cover and mounting concept for a photodiode system with maintenance-friendly access."
+        },
+        {
+          name: "Engineering Drawing Package",
+          category: "technical-drawings",
+          label: "Technical Drawings",
+          image: "assets/images/portfolio/technical-drawings/engineering-drawing-package.svg",
+          software: "AutoCAD, Microsoft Office",
+          role: "Documentation Lead",
+          description: "Prepared detailed fabrication drawings, sheet references, and assembly notes for production handoff."
+        },
+        {
+          name: "Product Cutter Modification",
+          category: "technical-drawings",
+          label: "Technical Drawings",
+          image: "assets/images/portfolio/technical-drawings/product-cutter-modification.svg",
+          software: "AutoCAD, SolidWorks",
+          role: "Design Engineer",
+          description: "Revised cutter geometry and drawing sets for improved manufacturability, alignment, and repeatability."
+        },
+        {
+          name: "Fabricated Leaf Grasshopper Rearing Box",
+          category: "fabrication",
+          label: "Fabrication",
+          image: "assets/images/portfolio/fabrication/grasshopper-rearing-box.svg",
+          software: "CAD Planning, Fabrication Notes",
+          role: "Fabrication Support",
+          description: "Produced a fabrication-focused enclosure concept for a rearing box with practical assembly and material considerations."
+        },
+        {
+          name: "High-fidelity 3D Kitchen Rendering",
+          category: "renderings",
+          label: "3D Visualization",
+          image: "assets/images/portfolio/renderings/kitchen-rendering.svg",
+          software: "SketchUp, Blender",
+          role: "Visualization Designer",
+          description: "Built a client-ready residential rendering concept for layout review, visualization, and presentation use."
+        }
+      ],
+      certifications: [
+        {
+          title: "Regional Cooperation & Mobility for Youth Skills Development",
+          date: "July 2026",
+          category: "Professional Development",
+          icon: "&#127891;"
+        },
+        {
+          title: "Construction Project Cost Estimation and Fundamentals of Bluebeam Revu",
+          date: "June 2026",
+          category: "Construction",
+          icon: "&#128208;"
+        },
+        {
+          title: "SolidWorks Installation, Basics and User Interface, and Introduction to Sketching",
+          date: "May 2026",
+          category: "CAD",
+          icon: "&#9881;"
+        },
+        {
+          title: "Market Research for Product Management (Udemy / MTF)",
+          date: "December 2025",
+          category: "Business",
+          icon: "&#128269;"
+        },
+        {
+          title: "Business Administration Foundation Program",
+          date: "December 2025",
+          category: "Business Administration",
+          icon: "&#128188;"
+        },
+        {
+          title: "SolidWorks Advanced Training: Part and Multibody Modeling",
+          date: "November 2025",
+          category: "CAD",
+          icon: "&#9881;"
+        },
+        {
+          title: "Diploma in Strategic Supply Chain Management",
+          date: "November 2025",
+          category: "Operations",
+          icon: "&#128230;"
+        },
+        {
+          title: "Lean Six Sigma Yellow Belt",
+          date: "October 2025",
+          category: "Process Improvement",
+          icon: "&#128200;"
+        },
+        {
+          title: "Lean Six Sigma White Belt",
+          date: "January 2023",
+          category: "Process Improvement",
+          icon: "&#128200;"
+        }
+      ],
+      services: [
+        {
+          title: "CAD Modeling",
+          icon: "&#9881;",
+          items: ["3D parts", "Assemblies", "Design revisions"]
+        },
+        {
+          title: "Engineering Drawings",
+          icon: "&#128208;",
+          items: ["2D drawings", "Shop drawings", "Fabrication references"]
+        },
+        {
+          title: "Technical Documentation",
+          icon: "&#128196;",
+          items: ["BOMs", "Reports", "Project records"]
+        },
+        {
+          title: "3D Rendering",
+          icon: "&#127968;",
+          items: ["Kitchen rendering", "Residential visualization", "Client presentations"]
+        },
+        {
+          title: "Process Improvement Consultation",
+          icon: "&#128200;",
+          items: ["DMAIC thinking", "Waste reduction", "Workflow review"]
+        },
+        {
+          title: "Technical Design Support",
+          icon: "&#128161;",
+          items: ["Design assistance", "Coordination", "Revision tracking"]
+        }
+      ]
+    };
+
+    const navToggle = document.getElementById("nav-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const progressBar = document.getElementById("scroll-progress-bar");
+
+    function listTags(items) {
+      return items.map((item) => `<span class="tag">${item}</span>`).join("");
+    }
+
+    function renderSkillCard(item, className) {
+      return `
+        <article class="${className} reveal">
+          <span class="icon-chip" aria-hidden="true">${item.icon}</span>
+          <h3>${item.title}</h3>
+          <div class="tag-list">${listTags(item.items)}</div>
+        </article>
+      `;
+    }
+
+    function renderContent() {
+      document.getElementById("skills-grid").innerHTML = siteData.skills
+        .map((item) => renderSkillCard(item, "skill-card"))
+        .join("");
+
+      document.getElementById("competency-grid").innerHTML = siteData.competencies
+        .map((item) => renderSkillCard(item, "competency-card"))
+        .join("");
+
+      document.getElementById("services-grid").innerHTML = siteData.services
+        .map((item) => renderSkillCard(item, "service-card"))
+        .join("");
+
+      document.getElementById("experience-list").innerHTML = siteData.experience
+        .map((item) => `
+          <article class="timeline-card reveal">
+            <time class="timeline-date" datetime="${item.period}">${item.period}</time>
+            <div>
+              <h3>${item.role}</h3>
+              <p class="company">${item.company}</p>
+              <ul class="detail-list">${item.points.map((point) => `<li>${point}</li>`).join("")}</ul>
+            </div>
+          </article>
+        `)
+        .join("");
+
+      document.getElementById("portfolio-grid").innerHTML = siteData.projects
+        .map((item) => `
+          <article class="project-card reveal" data-category="${item.category}">
+            <div class="project-media">
+              <img src="${item.image}" alt="${item.name}" loading="lazy">
+              <span class="project-category">${item.label}</span>
+            </div>
+            <div class="project-body">
+              <h3>${item.name}</h3>
+              <p>${item.description}</p>
+              <div class="project-meta">
+                <div class="meta-row"><span>Software</span><span>${item.software}</span></div>
+                <div class="meta-row"><span>Role</span><span>${item.role}</span></div>
+              </div>
+              <a class="btn btn-subtle btn-small" href="#contact">View Project</a>
+            </div>
+          </article>
+        `)
+        .join("");
+
+      document.getElementById("cert-grid").innerHTML = siteData.certifications
+        .map((item) => `
+          <article class="cert-card reveal">
+            <div class="cert-top">
+              <span class="icon-chip" aria-hidden="true">${item.icon}</span>
+              <div>
+                <h3>${item.title}</h3>
+                <div class="cert-meta">
+                  <span>${item.date}</span>
+                  <span>${item.category}</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-subtle btn-small" type="button" disabled>View Certificate</button>
+          </article>
+        `)
+        .join("");
+    }
+
+    function setupNavigation() {
+      navToggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.toggle("active");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+        navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("active");
+          navToggle.setAttribute("aria-expanded", "false");
+          navToggle.setAttribute("aria-label", "Open navigation");
+        });
+      });
+    }
+
+    function setupProjectFilters() {
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          filterButtons.forEach((item) => item.classList.remove("active"));
+          button.classList.add("active");
+
+          const selected = button.dataset.filter;
+          projectCards.forEach((card) => {
+            card.hidden = selected !== "all" && card.dataset.category !== selected;
+          });
+        });
+      });
+    }
+
+    function updateScrollState() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+      progressBar.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
+
+      let current = "home";
+      document.querySelectorAll("main section[id]").forEach((section) => {
+        if (window.scrollY >= section.offsetTop - 130) {
+          current = section.id;
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+      });
+    }
+
+    function setupRevealAnimations() {
+      const revealItems = document.querySelectorAll(".reveal");
+
+      if (!("IntersectionObserver" in window)) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealItems.forEach((item) => observer.observe(item));
+    }
+
+    function setupContactForm() {
+      const contactForm = document.getElementById("contact-form");
+      const formStatus = document.getElementById("form-status");
+
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(contactForm);
+        const name = formData.get("name");
+        const email = formData.get("email");
+        const message = formData.get("message");
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+
+        formStatus.classList.add("visible");
+        window.location.href = `mailto:padilla.vienjamar.e@gmail.com?subject=Portfolio%20Inquiry&body=${body}`;
+      });
+    }
+
+    function setupResumeRequest() {
+      const btn = document.getElementById('request-resume-btn');
+      const modal = document.getElementById('resume-modal');
+      const closeBtn = document.getElementById('resume-modal-close');
+      const sendBtn = document.getElementById('resume-send-btn');
+      const emailInput = document.getElementById('resume-email');
+      const nameInput = document.getElementById('resume-name');
+      const toast = document.getElementById('toast');
+
+      if (!btn || !modal || !sendBtn) return;
+
+      function showModal() {
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+        emailInput.focus();
+      }
+
+      function hideModal() {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 3500);
+      }
+
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showModal();
+      });
+
+      closeBtn.addEventListener('click', hideModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
+
+      sendBtn.addEventListener('click', async () => {
+        const requesterEmail = (emailInput.value || '').trim();
+        const requesterName = (nameInput.value || '').trim();
+        if (!requesterEmail) { emailInput.focus(); return; }
+        sendBtn.disabled = true;
+        sendBtn.textContent = 'Sending...';
+
+        const resumeLink = window.location.origin + '/assets/Vienjamar-Padilla-Resume.pdf';
+
+        // Use EmailJS if configured (place your IDs on the window object)
+        if (window.emailjs && window.EMAILJS_USER_ID && window.EMAILJS_SERVICE_ID && window.EMAILJS_TEMPLATE_REQUESTER && window.EMAILJS_TEMPLATE_OWNER) {
+          try {
+            emailjs.init(window.EMAILJS_USER_ID);
+            await emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_REQUESTER, {
+              to_email: requesterEmail,
+              to_name: requesterName || 'Friend',
+              resume_link: resumeLink
+            });
+
+            await emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_OWNER, {
+              owner_email: 'padilla.vienjamar.e@gmail.com',
+              requester_email: requesterEmail,
+              requester_name: requesterName || ''
+            });
+
+            showToast('Resume sent to your email');
+          } catch (err) {
+            console.error(err);
+            // fallback - open mail client to notify owner
+            window.location.href = `mailto:padilla.vienjamar.e@gmail.com?subject=Resume%20request%20from%20${encodeURIComponent(requesterEmail)}&body=Request%20from%20${encodeURIComponent(requesterName)}%20(${encodeURIComponent(requesterEmail)})`;
+            showToast('Resume request sent (please complete via your mail client)');
+          }
+        } else {
+          // Fallback: open mail clients - one to requester with resume link, one to owner notifying
+          try {
+            window.open(`mailto:${requesterEmail}?subject=Requested%20Resume&body=You%20can%20download%20the%20resume%20here:%20${encodeURIComponent(resumeLink)}`);
+            window.open(`mailto:padilla.vienjamar.e@gmail.com?subject=Resume%20request%20from%20${encodeURIComponent(requesterEmail)}&body=Request%20from%20${encodeURIComponent(requesterName)}%20(${encodeURIComponent(requesterEmail)})`);
+            showToast('Resume sent to your email (via mail client)');
+          } catch (err) {
+            console.error(err);
+            showToast('Unable to send resume automatically.');
+          }
+        }
+
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Send Resume';
+        hideModal();
+      });
+    }
+
+    renderContent();
+    setupNavigation();
+    setupProjectFilters();
+    setupRevealAnimations();
+    setupContactForm();
+    setupResumeRequest();
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+    window.addEventListener("load", updateScrollState);
+  </script>
+</body>
+</html>
