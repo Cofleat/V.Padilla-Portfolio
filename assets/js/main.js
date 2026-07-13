@@ -254,6 +254,19 @@ function renderSkillCard(item, className) {
   `;
 }
 
+function renderProjectImage(src, alt) {
+  if (/\.svg$/i.test(src)) {
+    return `
+      <picture>
+        <source srcset="${src}" type="image/svg+xml">
+        <img src="${src.replace(/\.svg$/i, ".png")}" alt="${alt}" loading="lazy">
+      </picture>
+    `;
+  }
+
+  return `<img src="${src}" alt="${alt}" loading="lazy">`;
+}
+
 function renderContent() {
   document.getElementById("skills-grid").innerHTML = siteData.skills
     .map((item) => renderSkillCard(item, "skill-card"))
@@ -284,7 +297,7 @@ function renderContent() {
     .map((item) => `
       <article class="project-card reveal" data-category="${item.category}">
         <div class="project-media">
-          <img src="${item.image}" alt="${item.name}" loading="lazy">
+          ${renderProjectImage(item.image, item.name)}
           <span class="project-category">${item.label}</span>
         </div>
         <div class="project-body">
