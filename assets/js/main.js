@@ -150,55 +150,73 @@ const siteData = {
       title: "Regional Cooperation & Mobility for Youth Skills Development",
       date: "July 2026",
       category: "Professional Development",
-      icon: "&#127891;"
+      issuer: "Youth Skills Program",
+      icon: "&#127891;",
+      fileName: "certificate.pdf"
     },
     {
       title: "Construction Project Cost Estimation and Fundamentals of Bluebeam Revu",
       date: "June 2026",
       category: "Construction",
-      icon: "&#128208;"
+      issuer: "Bluebeam Training",
+      icon: "&#128208;",
+      fileName: "certificate.pdf"
     },
     {
       title: "SolidWorks Installation, Basics and User Interface, and Introduction to Sketching",
       date: "May 2026",
       category: "CAD",
-      icon: "&#9881;"
+      issuer: "SolidWorks Training",
+      icon: "&#9881;",
+      fileName: "certificate.pdf"
     },
     {
       title: "Market Research for Product Management (Udemy / MTF)",
       date: "December 2025",
       category: "Business",
-      icon: "&#128269;"
+      issuer: "Udemy / MTF",
+      icon: "&#128269;",
+      fileName: "certificate.pdf"
     },
     {
       title: "Business Administration Foundation Program",
       date: "December 2025",
       category: "Business Administration",
-      icon: "&#128188;"
+      issuer: "Business Institute",
+      icon: "&#128188;",
+      fileName: "certificate.pdf"
     },
     {
       title: "SolidWorks Advanced Training: Part and Multibody Modeling",
       date: "November 2025",
       category: "CAD",
-      icon: "&#9881;"
+      issuer: "SolidWorks Training",
+      icon: "&#9881;",
+      fileName: "certificate.pdf"
     },
     {
       title: "Diploma in Strategic Supply Chain Management",
       date: "November 2025",
       category: "Operations",
-      icon: "&#128230;"
+      issuer: "Supply Chain Institute",
+      icon: "&#128230;",
+      fileName: "certificate.pdf"
     },
     {
       title: "Lean Six Sigma Yellow Belt",
       date: "October 2025",
       category: "Process Improvement",
-      icon: "&#128200;"
+      issuer: "Lean Six Sigma",
+      icon: "&#128200;",
+      fileName: "certificate.pdf"
     },
     {
       title: "Lean Six Sigma White Belt",
       date: "January 2023",
       category: "Process Improvement",
-      icon: "&#128200;"
+      issuer: "Lean Six Sigma",
+      icon: "&#128200;",
+      fileName: "certificate.pdf"
     }
   ],
   services: [
@@ -267,6 +285,22 @@ function renderProjectImage(src, alt) {
   return `<img src="${src}" alt="${alt}" loading="lazy">`;
 }
 
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function certificationFolder(title) {
+  return `assets/certificates/${slugify(title)}`;
+}
+
+function certificationFileLink(item) {
+  const fileName = item.fileName || "certificate.pdf";
+  return `${certificationFolder(item.title)}/${fileName}`;
+}
+
 function renderContent() {
   document.getElementById("skills-grid").innerHTML = siteData.skills
     .map((item) => renderSkillCard(item, "skill-card"))
@@ -314,22 +348,61 @@ function renderContent() {
     .join("");
 
   document.getElementById("cert-grid").innerHTML = siteData.certifications
-    .map((item) => `
-      <article class="cert-card reveal">
-        <div class="cert-top">
-          <span class="icon-chip" aria-hidden="true">${item.icon}</span>
-          <div>
-            <h3>${item.title}</h3>
-            <div class="cert-meta">
-              <span>${item.date}</span>
-              <span>${item.category}</span>
+    .map((item, index) => `
+      <article class="cert-card reveal" data-cert-index="${index}">
+        <div class="cert-content">
+          <div class="cert-top">
+            <span class="icon-chip" aria-hidden="true">${item.icon}</span>
+            <div>
+              <h3>${item.title}</h3>
+              <div class="cert-meta">
+                <span>${item.date}</span>
+                <span>${item.category}</span>
+                <span>${item.issuer}</span>
+              </div>
             </div>
           </div>
+          <div class="cert-actions">
+            <button class="btn btn-primary btn-small cert-view" type="button" aria-expanded="false">
+              View
+            </button>
+            <a class="btn btn-outline btn-small cert-download" href="${certificationFileLink(item)}" download>
+              Download
+            </a>
+          </div>
         </div>
-        <button class="btn btn-subtle btn-small" type="button" disabled>View Certificate</button>
+        <div class="cert-card-stack" aria-hidden="true">
+          <div class="cert-stack-shell">
+            <div class="cert-stack-card cert-stack-card-1"></div>
+            <div class="cert-stack-card cert-stack-card-2"></div>
+            <div class="cert-stack-card cert-stack-card-3">
+              <div class="cert-stack-preview">
+                <img src="${item.preview || "assets/images/cert-preview-placeholder.svg"}" alt="SVG preview for ${item.title}" loading="lazy">
+              </div>
+            </div>
+          </div>
+          <div class="cert-stack-label">Certificate stack preview</div>
+        </div>
       </article>
     `)
     .join("");
+
+  setupCertificationViewers();
+}
+
+function setupCertificationViewers() {
+  document.querySelectorAll(".cert-view").forEach((button) => {
+    button.addEventListener("click", () => {
+      const card = button.closest(".cert-card");
+      const isOpen = card.classList.toggle("expanded");
+      button.textContent = isOpen ? "Hide" : "View";
+      button.setAttribute("aria-expanded", String(isOpen));
+      const stack = card.querySelector(".cert-card-stack");
+      if (stack) {
+        stack.setAttribute("aria-hidden", String(!isOpen));
+      }
+    });
+  });
 }
 
 function setupNavigation() {
