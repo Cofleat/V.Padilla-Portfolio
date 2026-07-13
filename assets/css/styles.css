@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #f5f7fa;
   --surface: #ffffff;
   --surface-2: #edf1f5;
@@ -354,7 +354,7 @@ a {
 .hero {
   background:
     linear-gradient(135deg, rgba(16, 20, 27, 0.96), rgba(16, 20, 27, 0.78)),
-    url("assets/images/backgrounds/hero-technical-work.svg");
+    url("../images/backgrounds/hero-technical-work.svg");
   background-position: center;
   background-size: cover;
   color: #ffffff;
@@ -453,7 +453,7 @@ h4 {
 
 .hero-panel-visual {
   aspect-ratio: 4 / 3;
-  background-image: url("assets/images/hero/engineering-review.svg");
+  background-image: url("../images/hero/engineering-review.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -596,18 +596,18 @@ section {
 }
 
 .image-mosaic .main-photo {
-  background-image: url("assets/images/about/cad-workstation.svg");
+  background-image: url("../images/about/cad-workstation.svg");
   box-shadow: var(--shadow-soft);
   grid-row: span 2;
   height: 392px;
 }
 
 .image-mosaic .about-tile-secondary {
-  background-image: url("assets/images/backgrounds/hero-technical-work.svg");
+  background-image: url("../images/backgrounds/hero-technical-work.svg");
 }
 
 .image-mosaic .about-tile-tertiary {
-  background-image: url("assets/images/about/workshop-tools.svg");
+  background-image: url("../images/about/workshop-tools.svg");
 }
 
 .about-copy {
@@ -1390,7 +1390,7 @@ textarea {
   .hero {
     background-image:
       linear-gradient(135deg, rgba(16, 20, 27, 0.96), rgba(16, 20, 27, 0.78)),
-      url("assets/images/backgrounds/hero-technical-work.svg");
+      url("../images/backgrounds/hero-technical-work.svg");
   }
 
   .logo { font-size: var(--type-xs); }
@@ -1503,3 +1503,4 @@ textarea {
     padding: 20px;
   }
 }
+
