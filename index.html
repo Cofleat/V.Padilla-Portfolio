@@ -17,7 +17,7 @@
   <meta name="twitter:image:alt" content="Technical design portfolio illustration">
   <meta name="twitter:title" content="Vienjamar Padilla | Technical Designer &amp; CAD Specialist">
   <meta name="twitter:description" content="Engineering-focused portfolio for CAD, technical design, documentation, and project coordination.">
-  <link rel="canonical" href="https://yourdomain.com/">
+  <link rel="canonical" href="https://padil.github.io/V.Padilla-Portfolio/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/styles.css">
   <title>Vienjamar Padilla | Technical Designer &amp; CAD Specialist</title>
@@ -29,7 +29,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="logo" href="#home" aria-label="Vienjamar Padilla home">
-        <img class="logo-mark logo-image" src="favicon.svg" alt="Vienjamar Padilla logo">
+        <img class="logo-mark logo-image" src="favicon.svg" width="38" height="38" alt="Vienjamar Padilla logo" decoding="async">
         <span>VIENJAMAR PADILLA</span>
       </a>
 
@@ -221,6 +221,16 @@
       </div>
     </section>
 
+    <div class="cert-modal" id="cert-modal" role="dialog" aria-modal="true" aria-label="Certificate preview" aria-hidden="true">
+      <div class="cert-modal-shell">
+        <div class="cert-modal-header">
+          <div class="cert-modal-title" id="cert-modal-title">Certificate</div>
+          <button class="cert-modal-close" id="cert-modal-close" type="button" aria-label="Close certificate preview">✕</button>
+        </div>
+        <iframe class="cert-modal-frame" id="cert-modal-iframe" title="Certificate preview" loading="lazy"></iframe>
+      </div>
+    </div>
+
     <section id="certifications">
       <div class="container">
         <div class="section-head">
@@ -357,12 +367,9 @@
     }
   </script>
 
-  <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
-
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
-
 
 
 

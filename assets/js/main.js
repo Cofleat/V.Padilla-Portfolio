@@ -257,6 +257,9 @@ const navToggle = document.getElementById("nav-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
 const navLinks = document.querySelectorAll(".nav-link");
 const progressBar = document.getElementById("scroll-progress-bar");
+const EMAILJS_SDK_URL = "https://cdn.emailjs.com/sdk/3.2.0/email.min.js";
+let scrollTicking = false;
+let emailJsLoadPromise = null;
 
 function listTags(items) {
   return items.map((item) => `<span class="tag">${item}</span>`).join("");
@@ -277,12 +280,12 @@ function renderProjectImage(src, alt) {
     return `
       <picture>
         <source srcset="${src}" type="image/svg+xml">
-        <img src="${src.replace(/\.svg$/i, ".png")}" alt="${alt}" loading="lazy">
+        <img src="${src.replace(/\.svg$/i, ".png")}" alt="${alt}" loading="lazy" decoding="async">
       </picture>
     `;
   }
 
-  return `<img src="${src}" alt="${alt}" loading="lazy">`;
+  return `<img src="${src}" alt="${alt}" loading="lazy" decoding="async">`;
 }
 
 function slugify(text) {
@@ -317,7 +320,7 @@ function renderContent() {
   document.getElementById("experience-list").innerHTML = siteData.experience
     .map((item) => `
       <article class="timeline-card reveal">
-        <time class="timeline-date" datetime="${item.period}">${item.period}</time>
+        <span class="timeline-date">${item.period}</span>
         <div>
           <h3>${item.role}</h3>
           <p class="company">${item.company}</p>
@@ -366,22 +369,17 @@ function renderContent() {
             <button class="btn btn-primary btn-small cert-view" type="button" aria-expanded="false">
               View
             </button>
-            <a class="btn btn-outline btn-small cert-download" href="${certificationFileLink(item)}" download>
-              Download
-            </a>
           </div>
         </div>
         <div class="cert-card-stack" aria-hidden="true">
           <div class="cert-stack-shell">
-            <div class="cert-stack-card cert-stack-card-1"></div>
-            <div class="cert-stack-card cert-stack-card-2"></div>
-            <div class="cert-stack-card cert-stack-card-3">
-              <div class="cert-stack-preview">
-                <img src="${item.preview || "assets/images/cert-preview-placeholder.svg"}" alt="SVG preview for ${item.title}" loading="lazy">
+            <div class="cert-stack-card cert-preview-shell" role="button" tabindex="0" aria-label="Open certificate preview for ${item.title}">
+              <div class="cert-stack-preview" data-src="${certificationFileLink(item)}" data-title="${item.title}">
+                <div class="cert-preview-placeholder">Preview loads on click</div>
               </div>
             </div>
           </div>
-          <div class="cert-stack-label">Certificate stack preview</div>
+          <div class="cert-stack-label">Click to view full certificate</div>
         </div>
       </article>
     `)
@@ -391,18 +389,90 @@ function renderContent() {
 }
 
 function setupCertificationViewers() {
+  function ensureCertificatePreview(card) {
+    const preview = card?.querySelector(".cert-stack-preview");
+    if (!preview || preview.querySelector("iframe")) return;
+
+    const src = preview.dataset.src;
+    const title = preview.dataset.title || card.querySelector("h3")?.textContent || "Certificate";
+    if (!src) return;
+
+    const iframe = document.createElement("iframe");
+    iframe.className = "cert-preview-frame";
+    iframe.src = `${src}#toolbar=0&navpanes=0&scrollbar=0`;
+    iframe.title = `Certificate preview for ${title}`;
+    iframe.loading = "lazy";
+    preview.replaceChildren(iframe);
+  }
+
+  function openCertificateModal(card) {
+    const preview = card?.querySelector(".cert-stack-preview");
+    const src = preview?.dataset.src;
+    const modal = document.getElementById("cert-modal");
+    const iframe = document.getElementById("cert-modal-iframe");
+    const title = card?.querySelector("h3")?.textContent || "Certificate";
+    if (!modal || !iframe || !src) return;
+
+    iframe.src = src;
+    document.getElementById("cert-modal-title").textContent = title;
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    document.getElementById("cert-modal-close")?.focus();
+  }
+
+  function closeCertificateModal() {
+    const modal = document.getElementById("cert-modal");
+    const iframe = document.getElementById("cert-modal-iframe");
+    if (!modal || !iframe) return;
+
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+    iframe.src = "about:blank";
+    document.body.style.overflow = "";
+  }
+
   document.querySelectorAll(".cert-view").forEach((button) => {
     button.addEventListener("click", () => {
       const card = button.closest(".cert-card");
       const isOpen = card.classList.toggle("expanded");
       button.textContent = isOpen ? "Hide" : "View";
       button.setAttribute("aria-expanded", String(isOpen));
+      if (isOpen) ensureCertificatePreview(card);
       const stack = card.querySelector(".cert-card-stack");
       if (stack) {
         stack.setAttribute("aria-hidden", String(!isOpen));
       }
     });
   });
+
+  document.querySelectorAll(".cert-preview-shell").forEach((shell) => {
+    shell.addEventListener("click", () => {
+      openCertificateModal(shell.closest(".cert-card"));
+    });
+    shell.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openCertificateModal(shell.closest(".cert-card"));
+      }
+    });
+  });
+
+  const modal = document.getElementById("cert-modal");
+  const closeBtn = document.getElementById("cert-modal-close");
+  if (modal && closeBtn) {
+    closeBtn.addEventListener("click", closeCertificateModal);
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeCertificateModal();
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("active")) {
+        closeCertificateModal();
+      }
+    });
+  }
 }
 
 function setupNavigation() {
@@ -458,6 +528,16 @@ function updateScrollState() {
 
   navLinks.forEach((link) => {
     link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+  });
+}
+
+function requestScrollStateUpdate() {
+  if (scrollTicking) return;
+
+  scrollTicking = true;
+  window.requestAnimationFrame(() => {
+    updateScrollState();
+    scrollTicking = false;
   });
 }
 
@@ -576,10 +656,11 @@ function setupResumeRequest() {
     sendBtn.disabled = true;
     sendBtn.textContent = "Sending...";
 
-    const resumeLink = window.location.origin + "/assets/Vienjamar-Padilla-Resume.pdf";
+    const resumeLink = new URL("assets/Vienjamar-Padilla-Resume.pdf", window.location.href).href;
 
-    if (window.emailjs && window.EMAILJS_USER_ID && window.EMAILJS_SERVICE_ID && window.EMAILJS_TEMPLATE_REQUESTER && window.EMAILJS_TEMPLATE_OWNER) {
+    if (window.EMAILJS_USER_ID && window.EMAILJS_SERVICE_ID && window.EMAILJS_TEMPLATE_REQUESTER && window.EMAILJS_TEMPLATE_OWNER) {
       try {
+        await loadEmailJs();
         emailjs.init(window.EMAILJS_USER_ID);
         await emailjs.send(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_REQUESTER, {
           to_email: requesterEmail,
@@ -616,6 +697,22 @@ function setupResumeRequest() {
   });
 }
 
+function loadEmailJs() {
+  if (window.emailjs) return Promise.resolve(window.emailjs);
+  if (emailJsLoadPromise) return emailJsLoadPromise;
+
+  emailJsLoadPromise = new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = EMAILJS_SDK_URL;
+    script.async = true;
+    script.onload = () => resolve(window.emailjs);
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+
+  return emailJsLoadPromise;
+}
+
 renderContent();
 setupNavigation();
 setupProjectFilters();
@@ -623,6 +720,6 @@ setupRevealAnimations();
 setupContactForm();
 setupResumeRequest();
 updateScrollState();
-window.addEventListener("scroll", updateScrollState, { passive: true });
-window.addEventListener("resize", updateScrollState);
-window.addEventListener("load", updateScrollState);
+window.addEventListener("scroll", requestScrollStateUpdate, { passive: true });
+window.addEventListener("resize", requestScrollStateUpdate);
+window.addEventListener("load", requestScrollStateUpdate);
