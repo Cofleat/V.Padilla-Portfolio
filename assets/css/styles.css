@@ -1,21 +1,42 @@
 ﻿:root {
-  --bg: #f5f7fa;
+  --bg: #f4f6f9;
   --surface: #ffffff;
-  --surface-2: #edf1f5;
+  --surface-2: #eef3f8;
   --ink: #111821;
-  --ink-soft: #566273;
-  --ink-muted: #7b8797;
+  --ink-soft: #58657a;
+  --ink-muted: #7a8898;
   --charcoal: #10141b;
   --charcoal-2: #171d26;
   --steel: #293241;
-  --line: #dce3eb;
-  --line-dark: rgba(220, 227, 235, 0.14);
-  --accent: #3f7fe8;
-  --accent-soft: #e8f1ff;
-  --accent-ink: #1557b4;
+  --line: #dde5ee;
+  --line-dark: rgba(220, 227, 235, 0.12);
+  --accent: #3d7ae6;
+  --accent-soft: #edf4ff;
+  --accent-ink: #1a5ec4;
   --white: #f8fafc;
-  --shadow: 0 22px 70px rgba(17, 24, 33, 0.12);
-  --shadow-soft: 0 14px 38px rgba(17, 24, 33, 0.09);
+  --shadow: 0 18px 48px rgba(17, 24, 33, 0.08);
+  --shadow-soft: 0 10px 22px rgba(17, 24, 33, 0.06);
+}
+
+html[data-theme="dark"] {
+  --bg: #0d1117;
+  --surface: #111827;
+  --surface-2: #162132;
+  --ink: #edf3ff;
+  --ink-soft: #bfd0ee;
+  --ink-muted: #9eafd3;
+  --charcoal: #0b1118;
+  --charcoal-2: #101a26;
+  --steel: #dfe9ff;
+  --line: rgba(148, 163, 184, 0.18);
+  --line-dark: rgba(148, 163, 184, 0.14);
+  --accent: #6ca8ff;
+  --accent-soft: rgba(108, 168, 255, 0.12);
+  --accent-ink: #a7c7ff;
+  --white: #f8fafc;
+  --shadow: 0 18px 48px rgba(2, 6, 23, 0.34);
+  --shadow-soft: 0 10px 22px rgba(2, 6, 23, 0.2);
+}
   --radius: 8px;
   --radius-lg: 12px;
   --header-height: 72px;
@@ -216,6 +237,13 @@ a {
   right: 0;
 }
 
+.header-actions {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.theme-toggle,
 .nav-toggle {
   align-items: center;
   background: rgba(255, 255, 255, 0.04);
@@ -223,10 +251,25 @@ a {
   border-radius: var(--radius);
   color: #ffffff;
   cursor: pointer;
-  display: none;
+  display: inline-flex;
   height: 42px;
   justify-content: center;
   width: 42px;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.theme-toggle:hover,
+.nav-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.theme-toggle {
+  font-size: 1rem;
+}
+
+.nav-toggle {
+  display: none;
 }
 
 .nav-toggle span,
@@ -301,12 +344,12 @@ a {
   justify-content: center;
   min-height: 44px;
   padding: 12px 18px;
-  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+  transition: background 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
   white-space: nowrap;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .btn-primary {
@@ -353,7 +396,7 @@ a {
 
 .hero {
   background:
-    linear-gradient(135deg, rgba(16, 20, 27, 0.96), rgba(16, 20, 27, 0.78)),
+    linear-gradient(135deg, rgba(16, 20, 27, 0.94), rgba(16, 20, 27, 0.80)),
     url("../images/backgrounds/hero-technical-work.svg");
   background-position: center;
   background-size: cover;
@@ -365,14 +408,15 @@ a {
 
 .blueprint::before {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: 42px 42px;
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 34px 34px;
   content: "";
   inset: 0;
-  mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
   pointer-events: none;
   position: absolute;
+  opacity: 0.7;
 }
 
 .hero-inner {
@@ -1099,8 +1143,8 @@ section {
 
 .cert-stack-card {
   width: 100%;
-  max-width: 260px;
-  height: 140px;
+  max-width: 360px;
+  aspect-ratio: 1.45;
   border-radius: var(--radius-lg);
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -1119,6 +1163,7 @@ section {
 }
 
 .cert-stack-preview iframe,
+.cert-stack-preview img,
 .cert-preview-placeholder {
   border: 0;
   background: #ffffff;
@@ -1126,8 +1171,16 @@ section {
   width: 100%;
 }
 
+.cert-stack-preview img {
+  object-fit: contain;
+  padding: 8px;
+}
+
 .cert-preview-placeholder {
   align-items: center;
+  background:
+    linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
+    url("../images/cert-preview-placeholder.svg") center/cover no-repeat;
   color: var(--ink-soft);
   cursor: pointer;
   display: flex;
@@ -1140,6 +1193,7 @@ section {
 
 .cert-stack-preview iframe {
   cursor: zoom-in;
+  pointer-events: none;
 }
 
 .cert-modal {
@@ -1163,12 +1217,13 @@ section {
 
 .cert-modal-shell {
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 12px;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-  width: min(100%, 980px);
-  max-height: 90vh;
+  width: min(96vw, 1500px);
+  height: min(96dvh, 1100px);
   overflow: hidden;
   display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
 }
 
 .cert-modal-header {
@@ -1186,6 +1241,23 @@ section {
   font-weight: 900;
 }
 
+.cert-modal-actions {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+}
+
+.cert-modal-open {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.cert-modal-open:hover {
+  color: var(--accent);
+}
+
 .cert-modal-close {
   background: transparent;
   border: 0;
@@ -1194,10 +1266,25 @@ section {
   font-size: 1.2rem;
 }
 
-.cert-modal-frame {
-  height: min(80vh, 760px);
+.cert-modal-content {
+  min-height: 0;
+  width: 100%;
+  background: #f9fbff;
+  overflow: hidden;
+}
+
+.cert-modal-frame,
+.cert-modal-image {
+  display: block;
+  height: 100%;
   width: 100%;
   border: 0;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.cert-modal-image {
+  padding: 18px;
 }
 
 .cert-stack-label {
@@ -1324,20 +1411,21 @@ section {
   align-items: center;
   aspect-ratio: 1;
   background:
-    linear-gradient(90deg, rgba(17, 24, 33, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(17, 24, 33, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(10, 16, 24, 0.36), rgba(10, 16, 24, 0.2)),
+    url("../images/cert-preview-placeholder.svg") center/cover no-repeat,
     #ffffff;
-  background-size: 18px 18px;
-  border: 1px dashed #aeb8c5;
+  border: 1px solid rgba(97, 118, 145, 0.28);
   border-radius: var(--radius);
-  color: var(--ink-muted);
+  color: #ffffff;
   display: flex;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 900;
   justify-content: center;
+  letter-spacing: 0.08em;
   max-width: 140px;
-  text-align: center;
   padding: 8px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .contact-form {
@@ -1495,8 +1583,8 @@ textarea {
 
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transform: translateY(10px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .reveal.is-visible {
@@ -1635,6 +1723,34 @@ textarea {
 
   .container {
     width: min(100% - 28px, 1140px);
+  }
+
+  .cert-modal {
+    padding: 8px;
+  }
+
+  .cert-modal-shell {
+    width: 100%;
+    height: calc(100dvh - 16px);
+    border-radius: 8px;
+  }
+
+  .cert-modal-header {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .cert-modal-title {
+    font-size: 0.9rem;
+  }
+
+  .cert-modal-actions {
+    flex-shrink: 0;
+    gap: 10px;
+  }
+
+  .cert-modal-open {
+    white-space: nowrap;
   }
 
   section {

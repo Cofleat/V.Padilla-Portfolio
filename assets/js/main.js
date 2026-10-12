@@ -147,76 +147,103 @@ const siteData = {
   ],
   certifications: [
     {
+      title: "Data Analysis and Reporting via Spreadsheet",
+      date: "September 2026",
+      category: "Data Analysis",
+      issuer: "Department of Information and Communications Technology",
+      icon: "&#128202;",
+      fileName: "certificate.pdf",
+      folderName: "data-analysis-and-reporting-via-spreadsheet"
+    },
+    {
+      title: "PLC Training: Fundamentals of PLC Systems",
+      date: "October 2026",
+      category: "Automation",
+      issuer: "Nueva Ecija University of Science and Technology",
+      icon: "&#9881;",
+      fileName: "certificate.pdf",
+      folderName: "plc-training-fundamentals-of-plc-systems"
+    },
+    {
       title: "Regional Cooperation & Mobility for Youth Skills Development",
       date: "July 2026",
       category: "Professional Development",
-      issuer: "Youth Skills Program",
+      issuer: "China-ASEAN Technical Education Cooperation Platform",
       icon: "&#127891;",
-      fileName: "certificate.pdf"
+      fileName: "certificate.pdf",
+      folderName: "regional-cooperation-mobility-for-youth-skills-development"
     },
     {
       title: "Construction Project Cost Estimation and Fundamentals of Bluebeam Revu",
       date: "June 2026",
       category: "Construction",
-      issuer: "Bluebeam Training",
+      issuer: "Nueva Ecija University of Science and Technology",
       icon: "&#128208;",
-      fileName: "certificate.pdf"
+      fileName: "certificate.pdf",
+      folderName: "construction-project-cost-estimation-and-fundamentals-of-bluebeam-revu"
     },
     {
       title: "SolidWorks Installation, Basics and User Interface, and Introduction to Sketching",
       date: "May 2026",
       category: "CAD",
-      issuer: "SolidWorks Training",
+      issuer: "Nueva Ecija University of Science and Technology",
       icon: "&#9881;",
-      fileName: "certificate.pdf"
-    },
-    {
-      title: "Market Research for Product Management (Udemy / MTF)",
-      date: "December 2025",
-      category: "Business",
-      issuer: "Udemy / MTF",
-      icon: "&#128269;",
-      fileName: "certificate.pdf"
+      fileName: "certificate.pdf",
+      folderName: "solidworks-installation-basics-and-user-interface-and-introduction-to-sketching"
     },
     {
       title: "Business Administration Foundation Program",
       date: "December 2025",
       category: "Business Administration",
-      issuer: "Business Institute",
+      issuer: "Udemy",
       icon: "&#128188;",
-      fileName: "certificate.pdf"
+      fileName: "certificate.pdf",
+      folderName: "business-administration-foundation-program"
+    },
+    {
+      title: "Market Research for Product Management (Udemy / MTF)",
+      date: "December 2025",
+      category: "Marketing",
+      issuer: "Udemy / MTF",
+      icon: "&#128269;",
+      fileName: "certificate.pdf",
+      folderName: "market-research-for-product-management-udemy-mtf"
     },
     {
       title: "SolidWorks Advanced Training: Part and Multibody Modeling",
       date: "November 2025",
       category: "CAD",
-      issuer: "SolidWorks Training",
+      issuer: "Nueva Ecija University of Science and Technology",
       icon: "&#9881;",
-      fileName: "certificate.pdf"
+      fileName: "certificate.pdf",
+      folderName: "solidworks-advanced-training-part-and-multibody-modeling"
     },
     {
       title: "Diploma in Strategic Supply Chain Management",
       date: "November 2025",
       category: "Operations",
-      issuer: "Supply Chain Institute",
+      issuer: "Udemy",
       icon: "&#128230;",
-      fileName: "certificate.pdf"
+      fileName: "certificate.pdf",
+      folderName: "diploma-in-strategic-supply-chain-management"
     },
     {
       title: "Lean Six Sigma Yellow Belt",
-      date: "October 2025",
+      date: "September 2025",
       category: "Process Improvement",
-      issuer: "Lean Six Sigma",
+      issuer: "MF Opex",
       icon: "&#128200;",
-      fileName: "certificate.pdf"
+      fileName: "certificate.pdf",
+      folderName: "lean-six-sigma-yellow-belt"
     },
     {
       title: "Lean Six Sigma White Belt",
       date: "January 2023",
       category: "Process Improvement",
-      issuer: "Lean Six Sigma",
+      issuer: "MF Opex",
       icon: "&#128200;",
-      fileName: "certificate.pdf"
+      fileName: "certificate.pdf",
+      folderName: "lean-six-sigma-white-belt"
     }
   ],
   services: [
@@ -256,10 +283,45 @@ const siteData = {
 const navToggle = document.getElementById("nav-toggle");
 const mobileMenu = document.getElementById("mobile-menu");
 const navLinks = document.querySelectorAll(".nav-link");
+const themeToggle = document.getElementById("theme-toggle");
 const progressBar = document.getElementById("scroll-progress-bar");
 const EMAILJS_SDK_URL = "https://cdn.emailjs.com/sdk/3.2.0/email.min.js";
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 let scrollTicking = false;
 let emailJsLoadPromise = null;
+
+function applyTheme(theme) {
+  const normalizedTheme = theme === "dark" ? "dark" : "light";
+  document.documentElement.setAttribute("data-theme", normalizedTheme);
+  if (themeToggle) {
+    const nextIcon = normalizedTheme === "dark" ? "☀" : "☾";
+    themeToggle.querySelector(".theme-toggle-icon").textContent = nextIcon;
+    themeToggle.setAttribute("aria-label", normalizedTheme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+    themeToggle.title = normalizedTheme === "dark" ? "Switch to light theme" : "Switch to dark theme";
+  }
+}
+
+function initializeTheme() {
+  const savedTheme = localStorage.getItem("portfolio-theme");
+  const systemTheme = prefersDarkScheme.matches ? "dark" : "light";
+  const initialTheme = savedTheme || systemTheme;
+  applyTheme(initialTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const currentTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+      localStorage.setItem("portfolio-theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+  }
+
+  prefersDarkScheme.addEventListener("change", (event) => {
+    if (!localStorage.getItem("portfolio-theme")) {
+      applyTheme(event.matches ? "dark" : "light");
+    }
+  });
+}
 
 function listTags(items) {
   return items.map((item) => `<span class="tag">${item}</span>`).join("");
@@ -295,13 +357,22 @@ function slugify(text) {
     .replace(/^-+|-+$/g, "");
 }
 
-function certificationFolder(title) {
-  return `assets/certificates/${slugify(title)}`;
+function certificationFolder(item) {
+  const folderName = item.folderName || slugify(item.title);
+  return `assets/certificates/${folderName}`;
+}
+
+function getDocumentType(filePath) {
+  const extension = (filePath || "").split("?")[0].split("#")[0].split(".").pop()?.toLowerCase();
+  if (["png", "jpg", "jpeg", "webp", "gif", "svg"].includes(extension)) {
+    return "image";
+  }
+  return "pdf";
 }
 
 function certificationFileLink(item) {
   const fileName = item.fileName || "certificate.pdf";
-  return `${certificationFolder(item.title)}/${fileName}`;
+  return `${certificationFolder(item)}/${fileName}`;
 }
 
 function renderContent() {
@@ -374,7 +445,7 @@ function renderContent() {
         <div class="cert-card-stack" aria-hidden="true">
           <div class="cert-stack-shell">
             <div class="cert-stack-card cert-preview-shell" role="button" tabindex="0" aria-label="Open certificate preview for ${item.title}">
-              <div class="cert-stack-preview" data-src="${certificationFileLink(item)}" data-title="${item.title}">
+              <div class="cert-stack-preview" data-src="${certificationFileLink(item)}" data-title="${item.title}" data-doc-type="${getDocumentType(certificationFileLink(item))}">
                 <div class="cert-preview-placeholder">Preview loads on click</div>
               </div>
             </div>
@@ -389,32 +460,63 @@ function renderContent() {
 }
 
 function setupCertificationViewers() {
+  function createCertificateMedia(src, title, documentType = "pdf", isCardPreview = false) {
+    const media = document.createElement(documentType === "image" ? "img" : "iframe");
+    media.className = documentType === "image"
+      ? (isCardPreview ? "cert-preview-image" : "cert-modal-image")
+      : (isCardPreview ? "cert-preview-frame" : "cert-modal-frame");
+
+    if (documentType === "image") {
+      media.src = src;
+      media.alt = title;
+      media.loading = "lazy";
+      media.addEventListener("error", () => {
+        media.replaceWith(createFallbackMediaElement(title));
+      });
+      return media;
+    }
+
+    const toolbar = isCardPreview ? 0 : 1;
+    media.src = `${src}#toolbar=${toolbar}&navpanes=0&view=Fit`;
+    media.title = `Certificate preview for ${title}`;
+    media.loading = "lazy";
+    media.setAttribute("allowfullscreen", "true");
+    return media;
+  }
+
+  function createFallbackMediaElement(title) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "cert-preview-placeholder";
+    wrapper.textContent = `Preview unavailable for ${title}`;
+    return wrapper;
+  }
+
   function ensureCertificatePreview(card) {
     const preview = card?.querySelector(".cert-stack-preview");
-    if (!preview || preview.querySelector("iframe")) return;
+    if (!preview || preview.querySelector("iframe") || preview.querySelector("img")) return;
 
     const src = preview.dataset.src;
     const title = preview.dataset.title || card.querySelector("h3")?.textContent || "Certificate";
+    const documentType = preview.dataset.docType || getDocumentType(src);
     if (!src) return;
 
-    const iframe = document.createElement("iframe");
-    iframe.className = "cert-preview-frame";
-    iframe.src = `${src}#toolbar=0&navpanes=0&scrollbar=0`;
-    iframe.title = `Certificate preview for ${title}`;
-    iframe.loading = "lazy";
-    preview.replaceChildren(iframe);
+    const media = createCertificateMedia(src, title, documentType, true);
+    preview.replaceChildren(media);
   }
 
   function openCertificateModal(card) {
     const preview = card?.querySelector(".cert-stack-preview");
     const src = preview?.dataset.src;
     const modal = document.getElementById("cert-modal");
-    const iframe = document.getElementById("cert-modal-iframe");
+    const modalContent = document.getElementById("cert-modal-content");
     const title = card?.querySelector("h3")?.textContent || "Certificate";
-    if (!modal || !iframe || !src) return;
+    if (!modal || !modalContent || !src) return;
 
-    iframe.src = src;
+    const documentType = preview?.dataset.docType || getDocumentType(src);
+    modalContent.replaceChildren(createCertificateMedia(src, title, documentType));
     document.getElementById("cert-modal-title").textContent = title;
+    const openLink = document.getElementById("cert-modal-open");
+    if (openLink) openLink.href = src;
     modal.classList.add("active");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -423,12 +525,12 @@ function setupCertificationViewers() {
 
   function closeCertificateModal() {
     const modal = document.getElementById("cert-modal");
-    const iframe = document.getElementById("cert-modal-iframe");
-    if (!modal || !iframe) return;
+    const modalContent = document.getElementById("cert-modal-content");
+    if (!modal || !modalContent) return;
 
     modal.classList.remove("active");
     modal.setAttribute("aria-hidden", "true");
-    iframe.src = "about:blank";
+    modalContent.innerHTML = "";
     document.body.style.overflow = "";
   }
 
@@ -713,6 +815,7 @@ function loadEmailJs() {
   return emailJsLoadPromise;
 }
 
+initializeTheme();
 renderContent();
 setupNavigation();
 setupProjectFilters();

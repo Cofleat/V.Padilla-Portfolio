@@ -47,9 +47,14 @@
         </ul>
       </nav>
 
-      <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
-        <span aria-hidden="true"></span>
-      </button>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
+          <span class="theme-toggle-icon" aria-hidden="true">☀</span>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
     </div>
 
     <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
@@ -70,8 +75,8 @@
       <div class="container hero-inner">
         <div class="reveal">
           <p class="eyebrow">Mechanical Engineering Technology Graduate</p>
-          <h1>Technical Designer for precise engineering work.</h1>
-          <p class="hero-lead">I build clear CAD models, fabrication-ready documentation, and coordinated design outputs for mechanical and technical projects.</p>
+          <h1>Technical Designer focused on precision, clarity, and practical engineering solutions.</h1>
+          <p class="hero-lead">I design CAD models, technical drawings, and engineering documentation that support fabrication, product development, and efficient project execution.</p>
           <div class="role-grid" aria-label="Professional focus areas">
             <span class="role-pill">Technical Designer</span>
             <span class="role-pill">CAD Specialist</span>
@@ -121,22 +126,23 @@
         <div class="about-copy reveal">
           <div>
             <p class="section-kicker">About</p>
-            <h2 class="section-title">Practical engineering design with clear documentation.</h2>
+            <h2 class="section-title">Engineering precision, practical design thinking, and technology curiosity.</h2>
           </div>
-          <p>I am a Mechanical Engineering Technology graduate focused on technical design, CAD modeling, engineering documentation, and project coordination. My work connects requirements, drawings, materials, and production details into organized outputs that teams can act on.</p>
-          <p>I am continuously improving through CAD training, process improvement, business operations, and visualization tools so I can support both technical execution and clearer client communication.</p>
+          <p>I am Vienjamar Endaya Padilla, a Mechanical Engineering Technology graduate and technical designer focused on CAD, drafting, engineering documentation, and practical design support.</p>
+          <p>I completed my degree in Mechanical Engineering Technology at the Technological University of the Philippines – Cavite Campus in 2023. My professional experience includes technical drafting, mechanical CAD design, technical sales support, tooling design, and engineering services centered on production-ready solutions.</p>
+          <p>I enjoy working at the intersection of design and execution, turning technical requirements into clear, usable drawings and engineering outputs that teams can build with confidence.</p>
           <div class="proof-grid">
             <div class="proof-card">
               <strong>Technical Design</strong>
-              <span>Models, drawings, and manufacturable design details.</span>
+              <span>Mechanical CAD work, product modifications, and design support.</span>
             </div>
             <div class="proof-card">
-              <strong>Documentation</strong>
-              <span>BOMs, reports, estimates, and project references.</span>
+              <strong>Engineering Services</strong>
+              <span>Technical documentation, tool design, and practical project support.</span>
             </div>
             <div class="proof-card">
-              <strong>Coordination</strong>
-              <span>Client alignment, scheduling, and structured follow-through.</span>
+              <strong>Project Coordination</strong>
+              <span>Clear communication, structured workflow support, and execution follow-through.</span>
             </div>
           </div>
         </div>
@@ -207,8 +213,8 @@
       <div class="container">
         <div class="section-head center reveal">
           <p class="section-kicker">Portfolio</p>
-          <h2 class="section-title">Project structure ready for deeper case studies.</h2>
-          <p class="section-summary">Each card is prepared for an image, software stack, role, summary, and project link so additional work can be added cleanly.</p>
+          <h2 class="section-title">Selected engineering work built for fabrication, documentation, and technical review.</h2>
+          <p class="section-summary">These project examples show how I translate requirements into manufacturable designs, clear drawing packages, and structured technical outputs that support real execution.</p>
         </div>
         <div class="portfolio-controls" aria-label="Project filters">
           <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All</button>
@@ -225,9 +231,12 @@
       <div class="cert-modal-shell">
         <div class="cert-modal-header">
           <div class="cert-modal-title" id="cert-modal-title">Certificate</div>
-          <button class="cert-modal-close" id="cert-modal-close" type="button" aria-label="Close certificate preview">✕</button>
+          <div class="cert-modal-actions">
+            <a class="cert-modal-open" id="cert-modal-open" href="#" target="_blank" rel="noopener noreferrer">Open file &#8599;</a>
+            <button class="cert-modal-close" id="cert-modal-close" type="button" aria-label="Close certificate preview">&#10005;</button>
+          </div>
         </div>
-        <iframe class="cert-modal-frame" id="cert-modal-iframe" title="Certificate preview" loading="lazy"></iframe>
+        <div class="cert-modal-content" id="cert-modal-content" aria-live="polite"></div>
       </div>
     </div>
 
@@ -258,8 +267,8 @@
       <div class="container contact-grid">
         <div class="contact-card reveal">
           <p class="section-kicker">Contact</p>
-          <h2 class="section-title">Let's build the next technical deliverable.</h2>
-          <p class="section-summary">For CAD work, engineering documentation, technical design support, or project coordination, reach out through any of the channels below.</p>
+          <h2 class="section-title">Need reliable CAD support for your next project?</h2>
+          <p class="section-summary">I support mechanical design, drawing packages, fabrication references, and technical documentation for teams that need accurate, build-ready outputs.</p>
           <div class="contact-methods">
             <div class="contact-method">
               <span class="icon-chip" aria-hidden="true">&#9993;</span>
@@ -273,7 +282,7 @@
               <span class="icon-chip" aria-hidden="true">&#8681;</span>
               <button id="request-resume-btn" class="link-button">Request resume</button>
             </div>
-            <div class="qr-placeholder" aria-hidden="true">Future QR Code</div>
+            <div class="qr-placeholder" aria-label="LinkedIn and contact shortcut">LinkedIn<br>Connect</div>
           </div>
         </div>
 
