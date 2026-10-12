@@ -370,9 +370,36 @@ function getDocumentType(filePath) {
   return "pdf";
 }
 
+function getCertificateSourceCandidates(item) {
+  const folder = certificationFolder(item);
+  const preferred = item.fileName || "certificate.jpg";
+  const candidates = [
+    "certificate.jpg",
+    "certificate.jpeg",
+    "certificate.png",
+    "certificate.webp",
+    "certificate.svg",
+    "certificate.pdf",
+    "preview.jpg",
+    "preview.jpeg",
+    "preview.png",
+    "preview.webp",
+    "preview.svg",
+    "preview.pdf",
+    preferred
+  ];
+
+  const uniqueCandidates = [...new Set(candidates.map((candidate) => candidate.toLowerCase()))]
+    .map((candidate) => `${folder}/${candidate}`);
+
+  return uniqueCandidates;
+}
+
 function certificationFileLink(item) {
-  const fileName = item.fileName || "certificate.pdf";
-  return `${certificationFolder(item)}/${fileName}`;
+  const folder = certificationFolder(item);
+  const preferredCandidates = getCertificateSourceCandidates(item);
+  const bestCandidate = preferredCandidates.find((candidate) => /\.(jpe?g|png|webp|svg)$/i.test(candidate)) || preferredCandidates[0] || `${folder}/certificate.jpg`;
+  return bestCandidate;
 }
 
 function renderContent() {
@@ -422,73 +449,98 @@ function renderContent() {
     .join("");
 
   document.getElementById("cert-grid").innerHTML = siteData.certifications
-    .map((item, index) => `
-      <article class="cert-card reveal" data-cert-index="${index}">
-        <div class="cert-content">
-          <div class="cert-top">
-            <span class="icon-chip" aria-hidden="true">${item.icon}</span>
-            <div>
-              <h3>${item.title}</h3>
-              <div class="cert-meta">
-                <span>${item.date}</span>
-                <span>${item.category}</span>
-                <span>${item.issuer}</span>
+    .map((item, index) => {
+      const previewSource = certificationFileLink(item);
+      const previewType = getDocumentType(previewSource);
+      return `
+        <article class="cert-card reveal" data-cert-index="${index}">
+          <div class="cert-content">
+            <div class="cert-top">
+              <span class="icon-chip" aria-hidden="true">${item.icon}</span>
+              <div>
+                <h3>${item.title}</h3>
+                <div class="cert-meta">
+                  <span>${item.date}</span>
+                  <span>${item.category}</span>
+                  <span>${item.issuer}</span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="cert-actions">
-            <button class="btn btn-primary btn-small cert-view" type="button" aria-expanded="false">
-              View
-            </button>
-          </div>
-        </div>
-        <div class="cert-card-stack" aria-hidden="true">
-          <div class="cert-stack-shell">
-            <div class="cert-stack-card cert-preview-shell" role="button" tabindex="0" aria-label="Open certificate preview for ${item.title}">
-              <div class="cert-stack-preview" data-src="${certificationFileLink(item)}" data-title="${item.title}" data-doc-type="${getDocumentType(certificationFileLink(item))}">
-                <div class="cert-preview-placeholder">Preview loads on click</div>
+          <div class="cert-card-stack" aria-hidden="false">
+            <div class="cert-stack-shell">
+              <div class="cert-stack-card cert-preview-shell" role="button" tabindex="0" aria-label="Open certificate preview for ${item.title}">
+                <div class="cert-stack-preview" data-src="${previewSource}" data-title="${item.title}" data-doc-type="${previewType}">
+                  <div class="cert-preview-placeholder">Click to view large certificate</div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="cert-stack-label">Click to view full certificate</div>
-        </div>
-      </article>
-    `)
+        </article>
+      `;
+    })
     .join("");
 
   setupCertificationViewers();
 }
 
 function setupCertificationViewers() {
-  function createCertificateMedia(src, title, documentType = "pdf", isCardPreview = false) {
+  function createFallbackMediaElement(title, reason = "Preview unavailable") {
+    const wrapper = document.createElement("div");
+    wrapper.className = "cert-preview-placeholder";
+    wrapper.textContent = `${reason} for ${title}`;
+    return wrapper;
+  }
+
+  function createCertificateMedia(src, title, documentType = "pdf", isCardPreview = false, candidates = []) {
     const media = document.createElement(documentType === "image" ? "img" : "iframe");
     media.className = documentType === "image"
       ? (isCardPreview ? "cert-preview-image" : "cert-modal-image")
       : (isCardPreview ? "cert-preview-frame" : "cert-modal-frame");
+    media.oncontextmenu = (event) => event.preventDefault();
 
-    if (documentType === "image") {
-      media.src = src;
-      media.alt = title;
+    const currentCandidates = Array.isArray(candidates) && candidates.length > 0 ? candidates : [src];
+    let activeIndex = 0;
+
+    const tryLoadCandidate = (candidateIndex) => {
+      const candidate = currentCandidates[candidateIndex];
+      if (!candidate) {
+        media.replaceWith(createFallbackMediaElement(title, "Preview unavailable"));
+        return;
+      }
+
+      if (documentType === "image") {
+        media.src = candidate;
+        media.alt = title;
+        media.loading = "lazy";
+        media.draggable = false;
+        media.onerror = () => {
+          if (candidateIndex < currentCandidates.length - 1) {
+            tryLoadCandidate(candidateIndex + 1);
+          } else {
+            media.replaceWith(createFallbackMediaElement(title, "Preview unavailable"));
+          }
+        };
+        return;
+      }
+
+      const toolbar = isCardPreview ? 0 : 1;
+      media.src = `${candidate}#toolbar=${toolbar}&navpanes=0&view=Fit`;
+      media.title = `Certificate preview for ${title}`;
       media.loading = "lazy";
-      media.addEventListener("error", () => {
-        media.replaceWith(createFallbackMediaElement(title));
-      });
-      return media;
-    }
+      media.setAttribute("allowfullscreen", "true");
+      media.setAttribute("sandbox", "allow-scripts allow-same-origin");
+      media.onerror = () => {
+        if (candidateIndex < currentCandidates.length - 1) {
+          tryLoadCandidate(candidateIndex + 1);
+        } else {
+          media.replaceWith(createFallbackMediaElement(title, "Preview unavailable"));
+        }
+      };
+    };
 
-    const toolbar = isCardPreview ? 0 : 1;
-    media.src = `${src}#toolbar=${toolbar}&navpanes=0&view=Fit`;
-    media.title = `Certificate preview for ${title}`;
-    media.loading = "lazy";
-    media.setAttribute("allowfullscreen", "true");
+    tryLoadCandidate(activeIndex);
     return media;
-  }
-
-  function createFallbackMediaElement(title) {
-    const wrapper = document.createElement("div");
-    wrapper.className = "cert-preview-placeholder";
-    wrapper.textContent = `Preview unavailable for ${title}`;
-    return wrapper;
   }
 
   function ensureCertificatePreview(card) {
@@ -500,7 +552,13 @@ function setupCertificationViewers() {
     const documentType = preview.dataset.docType || getDocumentType(src);
     if (!src) return;
 
-    const media = createCertificateMedia(src, title, documentType, true);
+    const candidateUrls = getCertificateSourceCandidates({
+      title,
+      fileName: src.split("/").pop(),
+      folderName: src.split("/").slice(-2, -1)[0]
+    });
+
+    const media = createCertificateMedia(src, title, documentType, true, candidateUrls);
     preview.replaceChildren(media);
   }
 
@@ -513,10 +571,14 @@ function setupCertificationViewers() {
     if (!modal || !modalContent || !src) return;
 
     const documentType = preview?.dataset.docType || getDocumentType(src);
-    modalContent.replaceChildren(createCertificateMedia(src, title, documentType));
+    const candidateUrls = getCertificateSourceCandidates({
+      title,
+      fileName: src.split("/").pop(),
+      folderName: src.split("/").slice(-2, -1)[0]
+    });
+
+    modalContent.replaceChildren(createCertificateMedia(src, title, documentType, false, candidateUrls));
     document.getElementById("cert-modal-title").textContent = title;
-    const openLink = document.getElementById("cert-modal-open");
-    if (openLink) openLink.href = src;
     modal.classList.add("active");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -534,18 +596,8 @@ function setupCertificationViewers() {
     document.body.style.overflow = "";
   }
 
-  document.querySelectorAll(".cert-view").forEach((button) => {
-    button.addEventListener("click", () => {
-      const card = button.closest(".cert-card");
-      const isOpen = card.classList.toggle("expanded");
-      button.textContent = isOpen ? "Hide" : "View";
-      button.setAttribute("aria-expanded", String(isOpen));
-      if (isOpen) ensureCertificatePreview(card);
-      const stack = card.querySelector(".cert-card-stack");
-      if (stack) {
-        stack.setAttribute("aria-hidden", String(!isOpen));
-      }
-    });
+  document.querySelectorAll(".cert-card").forEach((card) => {
+    ensureCertificatePreview(card);
   });
 
   document.querySelectorAll(".cert-preview-shell").forEach((shell) => {
